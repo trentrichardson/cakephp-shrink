@@ -77,6 +77,7 @@ Then in the layout you have:
 	echo $this->Shrink->js(array('jquery.js', 'site.coffee'), true);
 	echo $this->Shrink->fetch('js');
 ?>
+```
 
 Shrink will see that there are views passing js and css as well as layouts 
 and merge them together appropriately (layouts css and js, then views css and js)
@@ -125,16 +126,16 @@ Extending Shrink is extremely simple, and can likely be done with only a few lin
 code.  There are two abstractions, Compilers and Compressors.  
 
 Compilers are for file types like Coffee, Less, etc.  These can be found in the 
-app/Plugin/Shrink/ShrinkCompiler folder. The file and class name goes by the file 
-extension.  Less files have a .less extension, so will create ShrinkCompilerLess.php.
-Each compiler must set the $resultType variable to 'js' or 'css' (the end result type), 
-and implement the compile method.
+app/Plugin/Shrink/Lib/ShrinkType/ShrinkCompiler folder. The file and class name goes 
+by the file extension.  Less files have a .less extension, so will create 
+ShrinkCompilerLess.php.  Each compiler must set the $resultType variable to 'js' or 
+'css' (the end result type), and implement the compile method.
 
 Compressors are for minifying the code after it has been compiled to js or css. These 
-can be found in app/Plugin/Shrink/ShrinkCompressor.  The file and class name goes by 
-the option you set in settings (the minifier option for js or css).  So if you pass 
-the minifier option for css to be cssmin, the file name will be ShrinkCompressorCssmin.php.
-Each compressor class must implement the compress method.
+can be found in app/Plugin/Shrink/Lib/ShrinkType/ShrinkCompressor.  The file and class 
+name goes by the option you set in settings (the minifier option for js or css).  So 
+if you pass the minifier option for css to be cssmin, the file name will be 
+ShrinkCompressorCssmin.php.  Each compressor class must implement the compress method.
 
 The easiest way to extend a compiler or compressor is to simply copy one of the existing
 versions.  You will also notice compilers and compressors extend ShrinkBase.  This is a 
