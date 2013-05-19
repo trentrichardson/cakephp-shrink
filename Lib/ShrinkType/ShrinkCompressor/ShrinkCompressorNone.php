@@ -2,8 +2,6 @@
 
 class ShrinkCompressorNone extends ShrinkBase implements ShrinkCompressorInterface{
 
-	public $resultType = 'css';
-
 	private $settings = array();
 
 	/**
