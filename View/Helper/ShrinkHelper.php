@@ -74,9 +74,7 @@ class ShrinkHelper extends AppHelper{
 	*/
 	public function __construct(View $View, $options = array()) {
 		parent::__construct($View,$options);
-
-		$this->settings = array_merge_recursive($this->settings, $options);
-
+		
 		// URL Rewrites are switched off, so wee need to add this extra path.
 		if(Configure::read('App.baseUrl')){
 			$this->extraPath = 'app/webroot/';
