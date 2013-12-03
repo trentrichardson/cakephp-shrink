@@ -6,7 +6,7 @@ class ShrinkCompilerScss extends ShrinkBase implements ShrinkCompilerInterface{
 
 	private $settings = array(
 			'sass'=>array(
-					'sass'=>'/usr/bin/sass',
+					'sass'=>'scssphp', // scssphp to use php version, sass to use cmd line version
 					'path'=>'/usr/bin'
 				)
 		);
@@ -29,10 +29,18 @@ class ShrinkCompilerScss extends ShrinkBase implements ShrinkCompilerInterface{
 		$style = 'compact';
 
 		// compile scss
-		$cmd = $this->settings['sass']['sass'] .' -t '. $style .' '. $file->path;
-		$env = array('PATH'=>$this->settings['sass']['path']);
-		$code = $this->run($cmd, null, $env);
-
+		if($this->settings['sass']['sass'] == 'scssphp'){ // php version
+			App::import('Vendor', 'Shrink.scssphp', array('file' => 'scssphp'.DS.'scss.inc.php'));
+			$scss = new scssc();
+			$scss->setImportPaths(array($file->Folder->path));
+			$code = $scss->compile($file->read());
+		}
+		else{ // cmd line version
+			$cmd = $this->settings['sass']['sass'] .' -t '. $style .' '. $file->path;
+			$env = array('PATH'=>$this->settings['sass']['path']);
+			$code = $this->cmd($cmd, null, $env);
+		}
+		
 		return $code;
 	}
 }

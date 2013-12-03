@@ -31,7 +31,7 @@ class ShrinkCompilerCoffee extends ShrinkBase implements ShrinkCompilerInterface
 		// compile coffee script
 		$cmd = $this->settings['coffee']['node'] .' '. $this->settings['coffee']['coffee'] .' -c -p '. $file->path;
 		$env = array('NODE_PATH'=>$this->settings['coffee']['node_path']);
-		$code = $this->run($cmd, null, $env);
+		$code = $this->cmd($cmd, null, $env);
 
 		return $code;
 	}
