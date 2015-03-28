@@ -6,12 +6,15 @@
 * http://trentrichardson.com/Impromptu/GPL-LICENSE.txt
 * http://trentrichardson.com/Impromptu/MIT-LICENSE.txt
 */
-App::uses('AppHelper','View/Helper');
-App::uses('Folder', 'Utility');
-App::uses('File', 'Utility');
+namespace Shrink\View\Helper;
+
+use Cake\View\Helper;
+use Cake\Filesystem\Folder;
+use Cake\Filesystem\File;
+use Shrink\Lib\ShrinkType;
 App::uses('ShrinkType','Shrink.Lib/ShrinkType');
 
-class ShrinkHelper extends AppHelper{
+class ShrinkHelper extends Helper{
 
 	/**
 	* @var array - master queue of files
@@ -35,12 +38,12 @@ class ShrinkHelper extends AppHelper{
 	* @var array - stores the instances of the compressors
 	*/
 	private $compressors = array();
-	
+
 	/**
 	* @var string - if no url rewrites this is the extra path
 	*/
 	private $extraPath = '';
-	
+
 	/**
 	* @var boolean - if debugging level is reached
 	*/
@@ -74,7 +77,7 @@ class ShrinkHelper extends AppHelper{
 	*/
 	public function __construct(View $View, $options = array()) {
 		parent::__construct($View,$options);
-		
+
 		// URL Rewrites are switched off, so wee need to add this extra path.
 		if(Configure::read('App.baseUrl')){
 			$this->extraPath = 'app/webroot/';
@@ -126,7 +129,7 @@ class ShrinkHelper extends AppHelper{
 	public function js($files, $buffer=false, $how='link'){
 		return $this->add('js', $files, $buffer, $how);
 	}
-	
+
 	/**
 	* Adds a file to the file queue, used internally
 	* @param string type - 'js' or 'css'. This should be the end result type
@@ -226,7 +229,7 @@ class ShrinkHelper extends AppHelper{
 					$code = $this->compressors[$compressorName]->compress($code);
 					$output .= $code ."\n";
 				}
-				
+
 			}
 
 			// be sure no duplicate charsets

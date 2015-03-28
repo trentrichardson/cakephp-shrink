@@ -7,10 +7,10 @@ About
 - Author: [Trent Richardson](http://trentrichardson.com)
 - Twitter: [@practicalweb](http://twitter.com/practicalweb)
 
-The Shrink plugin compiles, combines, and minifies javascript and css.  It currently has 
+The Shrink plugin compiles, combines, and minifies javascript and css.  It currently has
 support for native javascript and css, Less (php version), Sass, and CoffeeScript.
 
-Shrink is a minimal configuration plugin.  For a super powerful, configurable asset minifier 
+Shrink is a minimal configuration plugin.  For a super powerful, configurable asset minifier
 look into [Mark Story's asset_compress](https://github.com/markstory/asset_compress) instead.
 
 Installation
@@ -18,15 +18,15 @@ Installation
 
 Download Shrink and place into app/Plugin folder
 
-Enable the plugin in bootstrap.php with `CakePlugin::load('Shrink');` or `CakePlugin::loadAll();`
+Enable the plugin in bootstrap.php with `Plugin::load('Shrink');` or `Plugin::loadAll();`
 
 Add "Shrink.Shrink" to your `$helpers` property in your controller.  Likely AppController.php.
 
 Usage
 -----
 
-You use Shrink in the same way you already use the Html helper for js and css. The slight 
-differences are that you must include the file extension (since you can now process less, 
+You use Shrink in the same way you already use the Html helper for js and css. The slight
+differences are that you must include the file extension (since you can now process less,
 sass, coffee), and the parameters following the files.
 
 ```php
@@ -60,7 +60,7 @@ $this->Shrink->fetch($type, $how='link')
 Lets say you have a layout, and a view in the users controller.  The view might have at the top:
 
 ```php
-<?php 
+<?php
 	// View/Users/edit.ctp
 	echo $this->Shrink->css(array('users/edit.less'), true);
 	echo $this->Shrink->js(array('users/edit.coffee'), true);
@@ -69,7 +69,7 @@ Lets say you have a layout, and a view in the users controller.  The view might 
 
 Then in the layout you have:
 ```php
-<?php 
+<?php
 	// View/Layouts/default.ctp
 	echo $this->Shrink->css(array('bootstrap.css', 'site.less'), true);
 	echo $this->Shrink->fetch('css');
@@ -79,7 +79,7 @@ Then in the layout you have:
 ?>
 ```
 
-Shrink will see that there are views passing js and css as well as layouts 
+Shrink will see that there are views passing js and css as well as layouts
 and merge them together appropriately (layouts css and js, then views css and js)
 
 Once fetch is called that type's queue is cleared and you can queue again.
@@ -122,23 +122,23 @@ public $settings = array(
 Extending
 ---------
 
-Extending Shrink is extremely simple, and can likely be done with only a few lines of 
-code.  There are two abstractions, Compilers and Compressors.  
+Extending Shrink is extremely simple, and can likely be done with only a few lines of
+code.  There are two abstractions, Compilers and Compressors.
 
-Compilers are for file types like Coffee, Less, etc.  These can be found in the 
-app/Plugin/Shrink/Lib/ShrinkType/ShrinkCompiler folder. The file and class name goes 
-by the file extension.  Less files have a .less extension, so will create 
-ShrinkCompilerLess.php.  Each compiler must set the $resultType variable to 'js' or 
+Compilers are for file types like Coffee, Less, etc.  These can be found in the
+app/Plugin/Shrink/Lib/ShrinkType/ShrinkCompiler folder. The file and class name goes
+by the file extension.  Less files have a .less extension, so will create
+ShrinkCompilerLess.php.  Each compiler must set the $resultType variable to 'js' or
 'css' (the end result type), and implement the compile method.
 
-Compressors are for minifying the code after it has been compiled to js or css. These 
-can be found in app/Plugin/Shrink/Lib/ShrinkType/ShrinkCompressor.  The file and class 
-name goes by the option you set in settings (the minifier option for js or css).  So 
-if you pass the minifier option for css to be cssmin, the file name will be 
+Compressors are for minifying the code after it has been compiled to js or css. These
+can be found in app/Plugin/Shrink/Lib/ShrinkType/ShrinkCompressor.  The file and class
+name goes by the option you set in settings (the minifier option for js or css).  So
+if you pass the minifier option for css to be cssmin, the file name will be
 ShrinkCompressorCssmin.php.  Each compressor class must implement the compress method.
 
 The easiest way to extend a compiler or compressor is to simply copy one of the existing
-versions.  You will also notice compilers and compressors extend ShrinkBase.  This is a 
+versions.  You will also notice compilers and compressors extend ShrinkBase.  This is a
 utility class which currently provides a "cmd" method to execute commands.
 
 License
