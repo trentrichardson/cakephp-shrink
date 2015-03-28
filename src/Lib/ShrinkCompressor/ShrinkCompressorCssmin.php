@@ -1,4 +1,8 @@
 <?php
+namespace Shrink\Lib\ShrinkCompressor;
+
+use Shrink\Lib\ShrinkCompressor\ShrinkCompressorInterface;
+use Shrink\Lib\ShrinkBase;
 
 class ShrinkCompressorCssmin extends ShrinkBase implements ShrinkCompressorInterface{
 
@@ -25,11 +29,11 @@ class ShrinkCompressorCssmin extends ShrinkBase implements ShrinkCompressorInter
 	* @return string - code string minified/processed as requested
 	*/
 	function compress($code){
-		
+
 		App::import('Vendor', 'Shrink.cssmin', array('file' => 'cssmin'.DS.'cssmin.php'));
-		$css_minifier = new CssMinifier($code, 
-								$this->settings['cssmin']['filters'], 
-								$this->settings['cssmin']['plugins'] 
+		$css_minifier = new CssMinifier($code,
+								$this->settings['cssmin']['filters'],
+								$this->settings['cssmin']['plugins']
 							);
 		$code = $css_minifier->getMinified();
 

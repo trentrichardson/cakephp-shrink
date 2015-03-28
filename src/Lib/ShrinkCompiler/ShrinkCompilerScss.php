@@ -1,4 +1,8 @@
 <?php
+namespace Shrink\Lib\ShrinkCompiler;
+
+use Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface;
+use Shrink\Lib\ShrinkBase;
 
 class ShrinkCompilerScss extends ShrinkBase implements ShrinkCompilerInterface{
 
@@ -40,7 +44,7 @@ class ShrinkCompilerScss extends ShrinkBase implements ShrinkCompilerInterface{
 			$env = array('PATH'=>$this->settings['sass']['path']);
 			$code = $this->cmd($cmd, null, $env);
 		}
-		
+
 		return $code;
 	}
 }

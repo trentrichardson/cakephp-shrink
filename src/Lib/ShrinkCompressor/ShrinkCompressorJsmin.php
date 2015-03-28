@@ -1,4 +1,8 @@
 <?php
+namespace Shrink\Lib\ShrinkCompressor;
+
+use Shrink\Lib\ShrinkCompressor\ShrinkCompressorInterface;
+use Shrink\Lib\ShrinkBase;
 
 class ShrinkCompressorJsmin extends ShrinkBase implements ShrinkCompressorInterface{
 

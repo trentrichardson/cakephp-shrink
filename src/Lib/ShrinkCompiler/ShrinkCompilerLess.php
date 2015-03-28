@@ -1,4 +1,8 @@
 <?php
+namespace Shrink\Lib\ShrinkCompiler;
+
+use Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface;
+use Shrink\Lib\ShrinkBase;
 
 class ShrinkCompilerLess extends ShrinkBase implements ShrinkCompilerInterface{
 
@@ -29,9 +33,9 @@ class ShrinkCompilerLess extends ShrinkBase implements ShrinkCompilerInterface{
 		//$less->setFormatter('compressed');
 		$less->setPreserveComments(true);
 		//$less->setImportDir($file->Folder->path);
-		
+
 		$code = $less->compileFile($file->path);
-		
+
 		return $code;
 	}
 }

@@ -1,4 +1,8 @@
 <?php
+namespace Shrink\Lib\ShrinkCompiler;
+
+use Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface;
+use Shrink\Lib\ShrinkBase;
 
 class ShrinkCompilerCss extends ShrinkBase implements ShrinkCompilerInterface{
 
