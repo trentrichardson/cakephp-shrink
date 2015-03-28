@@ -12,7 +12,6 @@ use Cake\View\Helper;
 use Cake\Filesystem\Folder;
 use Cake\Filesystem\File;
 use Shrink\Lib\ShrinkType;
-App::uses('ShrinkType','Shrink.Lib/ShrinkType');
 
 class ShrinkHelper extends Helper{
 

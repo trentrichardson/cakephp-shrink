@@ -1,5 +1,5 @@
 <?php
-namespace Shrink\Lib\ShrinkType\ShrinkCompiler;
+namespace Shrink\Lib\ShrinkCompiler;
 
 /**
 * Interface for each Shrink Compiler abstraction

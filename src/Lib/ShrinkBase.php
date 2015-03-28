@@ -1,5 +1,5 @@
 <?php
-namespace Shrink\Lib\ShrinkType;
+namespace Shrink\Lib;
 
 
 /**
