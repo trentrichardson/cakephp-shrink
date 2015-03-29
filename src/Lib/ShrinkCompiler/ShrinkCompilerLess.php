@@ -3,6 +3,7 @@ namespace Shrink\Lib\ShrinkCompiler;
 
 use Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface;
 use Shrink\Lib\ShrinkBase;
+use lessc;
 
 class ShrinkCompilerLess extends ShrinkBase implements ShrinkCompilerInterface{
 
@@ -27,7 +28,6 @@ class ShrinkCompilerLess extends ShrinkBase implements ShrinkCompilerInterface{
 	*/
 	function compile($file){
 
-		App::import('Vendor', 'Shrink.lessphp', ['file' => 'lessphp'.DS.'lessc.inc.php']);
 		$less = new lessc;
 
 		//$less->setFormatter('compressed');

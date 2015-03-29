@@ -3,6 +3,7 @@ namespace Shrink\Lib\ShrinkCompiler;
 
 use Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface;
 use Shrink\Lib\ShrinkBase;
+use scssc;
 
 class ShrinkCompilerScss extends ShrinkBase implements ShrinkCompilerInterface{
 
@@ -34,9 +35,8 @@ class ShrinkCompilerScss extends ShrinkBase implements ShrinkCompilerInterface{
 
 		// compile scss
 		if($this->settings['sass']['sass'] == 'scssphp'){ // php version
-			App::import('Vendor', 'Shrink.scssphp', ['file' => 'scssphp'.DS.'scss.inc.php']);
 			$scss = new scssc();
-			$scss->setImportPaths(array($file->Folder->path));
+			$scss->setImportPaths([$file->Folder->path]);
 			$code = $scss->compile($file->read());
 		}
 		else{ // cmd line version
