@@ -8,6 +8,17 @@ namespace Shrink\Lib;
 class ShrinkBase{
     protected $_error;
 
+    
+    /**
+    * Constructer - merges settings with options
+    * @param array $options - options to set for compilers and compressors
+    * @return void
+    */
+    function __construct($options=[]){
+        $this->settings = array_merge_recursive($this->settings, $options);
+    }
+
+
     /**
     * Run a command and return the output
     * @param string $cmd command to run
