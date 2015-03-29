@@ -14,7 +14,7 @@ class ShrinkCompressorNone extends ShrinkBase implements ShrinkCompressorInterfa
 	* @param string $code - unminified code string
 	* @return string - code string minified/processed as requested
 	*/
-	function compress($code){
+	public function compress($code){
 		return $code;
 	}
 }

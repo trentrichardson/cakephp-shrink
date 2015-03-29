@@ -21,7 +21,7 @@ class ShrinkCompilerSass extends ShrinkBase implements ShrinkCompilerInterface{
 	* @param CakeFile file - 'js' or 'css'. This should be the end result type
 	* @return string - code string minified/processed as requested
 	*/
-	function compile($file){
+	public function compile($file){
 		$code = '';
 		$style = 'compact';
 

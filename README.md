@@ -16,9 +16,13 @@ look into [Mark Story's asset_compress](https://github.com/markstory/asset_compr
 Installation
 ------------
 
-Download Shrink and place into app/Plugin folder
+It is recommended to use composer to install: `"trentrichardson/cakephp-shrink": "dev-cakephp-v3.0"`.
+Then enable your plugin in bootstrap.php `Plugin::load('Shrink');` or `Plugin::loadAll();`.
 
-Enable the plugin in bootstrap.php with `Plugin::load('Shrink');` or `Plugin::loadAll();`
+You can also manually download Shrink and place into app/Plugin folder
+
+Enable the plugin in bootstrap.php with `Plugin::load('Shrink',['autoload'=>true]);` or 
+`Plugin::loadAll();`.  When manually installing you need to set the autoload flag to true.
 
 Add "Shrink.Shrink" to your `$helpers` property in your controller.  Likely AppController.php.
 
