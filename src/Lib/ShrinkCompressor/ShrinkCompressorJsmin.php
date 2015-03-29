@@ -3,18 +3,19 @@ namespace Shrink\Lib\ShrinkCompressor;
 
 use Shrink\Lib\ShrinkCompressor\ShrinkCompressorInterface;
 use Shrink\Lib\ShrinkBase;
+use JSMin;
 
 class ShrinkCompressorJsmin extends ShrinkBase implements ShrinkCompressorInterface{
 
-	private $settings = array(
-			'jsmin'=>array()
-		);
+	private $settings = [
+			'jsmin'=>[]
+		];
 
 	/**
 	* Constructer - merges settings with options
 	* @return void
 	*/
-	function __construct($options=array()){
+	function __construct($options=[]){
 		$this->settings = array_merge_recursive($this->settings, $options);
 	}
 
@@ -25,7 +26,6 @@ class ShrinkCompressorJsmin extends ShrinkBase implements ShrinkCompressorInterf
 	*/
 	function compress($code){
 
-		App::import('Vendor', 'Shrink.jsmin/jsmin');
 		$code = trim(JSMin::minify($code));
 
 		return $code;

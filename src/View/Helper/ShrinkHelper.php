@@ -9,6 +9,7 @@
 namespace Shrink\View\Helper;
 
 use Cake\View\Helper;
+use Cake\View\View;
 use Cake\Core\Configure;
 use Cake\Filesystem\Folder;
 use Cake\Filesystem\File;

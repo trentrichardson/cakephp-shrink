@@ -8,15 +8,15 @@ class ShrinkCompilerLess extends ShrinkBase implements ShrinkCompilerInterface{
 
 	public $resultType = 'css';
 
-	private $settings = array(
-			'less'=>array()
-		);
+	private $settings = [
+			'less'=>[]
+		];
 
 	/**
 	* Constructer - merges settings with options
 	* @return void
 	*/
-	function __construct($options=array()){
+	function __construct($options=[]){
 		$this->settings = array_merge_recursive($this->settings, $options);
 	}
 
@@ -27,7 +27,7 @@ class ShrinkCompilerLess extends ShrinkBase implements ShrinkCompilerInterface{
 	*/
 	function compile($file){
 
-		App::import('Vendor', 'Shrink.lessphp', array('file' => 'lessphp'.DS.'lessc.inc.php'));
+		App::import('Vendor', 'Shrink.lessphp', ['file' => 'lessphp'.DS.'lessc.inc.php']);
 		$less = new lessc;
 
 		//$less->setFormatter('compressed');

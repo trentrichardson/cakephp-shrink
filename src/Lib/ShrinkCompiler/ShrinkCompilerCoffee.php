@@ -8,19 +8,19 @@ class ShrinkCompilerCoffee extends ShrinkBase implements ShrinkCompilerInterface
 
 	public $resultType = 'js';
 
-	private $settings = array(
-			'coffee'=>array(
+	private $settings = [
+			'coffee'=>[
 					'coffee'=>'/usr/local/bin/coffee',
 					'node' => '/usr/local/bin/node',
 					'node_path' => '/usr/local/lib/node_modules'
-				)
-		);
+				]
+		];
 
 	/**
 	* Constructer - merges settings with options
 	* @return void
 	*/
-	function __construct($options=array()){
+	function __construct($options=[]){
 		$this->settings = array_merge_recursive($this->settings, $options);
 	}
 

@@ -2,6 +2,7 @@
 namespace Shrink\Lib;
 
 
+
 /**
 * External utility class to retrieve an instance
 */
@@ -14,11 +15,10 @@ class ShrinkType{
 	* @return class - new instance of the requested type
 	*/
 	static function getCompiler($type, $settings){
-		$classname = 'ShrinkCompiler'. strtoupper(substr($type,0,1)).strtolower(substr($type,1));
-		$filename = 'ShrinkCompiler' .DS. $classname .'.php';
-		if(include_once($filename)){
-			return new $classname($settings);
-		}
+
+        $class = __NAMESPACE__ . '\\ShrinkCompiler\\' .
+            'ShrinkCompiler'. strtoupper(substr($type,0,1)).strtolower(substr($type,1));
+        return new $class($settings);
 	}
 
 	/**
@@ -28,10 +28,9 @@ class ShrinkType{
 	* @return class - new instance of the requested type
 	*/
 	static function getCompressor($type, $settings){
-		$classname = 'ShrinkCompressor'. strtoupper(substr($type,0,1)).strtolower(substr($type,1));
-		$filename = 'ShrinkCompressor' .DS. $classname .'.php';
-		if(include_once($filename)){
-			return new $classname($settings);
-		}
+
+        $class = __NAMESPACE__ . '\\ShrinkCompressor\\' .
+            'ShrinkCompressor'. strtoupper(substr($type,0,1)).strtolower(substr($type,1));
+        return new $class($settings);
 	}
 }

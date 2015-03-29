@@ -8,18 +8,18 @@ class ShrinkCompilerScss extends ShrinkBase implements ShrinkCompilerInterface{
 
 	public $resultType = 'css';
 
-	private $settings = array(
-			'sass'=>array(
+	private $settings = [
+			'sass'=>[
 					'sass'=>'scssphp', // scssphp to use php version, sass to use cmd line version
 					'path'=>'/usr/bin'
-				)
-		);
+				]
+		];
 
 	/**
 	* Constructer - merges settings with options
 	* @return void
 	*/
-	function __construct($options=array()){
+	function __construct($options=[]){
 		$this->settings = array_merge_recursive($this->settings, $options);
 	}
 
@@ -34,7 +34,7 @@ class ShrinkCompilerScss extends ShrinkBase implements ShrinkCompilerInterface{
 
 		// compile scss
 		if($this->settings['sass']['sass'] == 'scssphp'){ // php version
-			App::import('Vendor', 'Shrink.scssphp', array('file' => 'scssphp'.DS.'scss.inc.php'));
+			App::import('Vendor', 'Shrink.scssphp', ['file' => 'scssphp'.DS.'scss.inc.php']);
 			$scss = new scssc();
 			$scss->setImportPaths(array($file->Folder->path));
 			$code = $scss->compile($file->read());
