@@ -8,7 +8,7 @@ class ShrinkCompilerJs extends ShrinkBase implements ShrinkCompilerInterface{
 
 	public $resultType = 'js';
 
-	private $settings = [];
+	protected $settings = [];
 
 
 	/**

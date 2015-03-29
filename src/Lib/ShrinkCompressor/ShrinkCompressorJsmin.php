@@ -7,7 +7,7 @@ use JSMin;
 
 class ShrinkCompressorJsmin extends ShrinkBase implements ShrinkCompressorInterface{
 
-	private $settings = [
+	protected $settings = [
 			'jsmin'=>[]
 		];
 

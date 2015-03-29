@@ -7,7 +7,7 @@ use CssMin;
 
 class ShrinkCompressorCssmin extends ShrinkBase implements ShrinkCompressorInterface{
 
-	private $settings = [
+	protected $settings = [
 			'cssmin'=>[]
 		];
 

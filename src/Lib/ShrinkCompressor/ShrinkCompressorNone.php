@@ -6,7 +6,7 @@ use Shrink\Lib\ShrinkBase;
 
 class ShrinkCompressorNone extends ShrinkBase implements ShrinkCompressorInterface{
 
-	private $settings = [];
+	protected $settings = [];
 
 
 	/**

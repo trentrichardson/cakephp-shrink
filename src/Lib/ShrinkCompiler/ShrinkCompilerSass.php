@@ -8,7 +8,7 @@ class ShrinkCompilerSass extends ShrinkBase implements ShrinkCompilerInterface{
 
 	public $resultType = 'css';
 
-	private $settings = [
+	protected $settings = [
 			'sass'=>[
 					'sass'=>'/usr/bin/sass',
 					'path'=>'/usr/bin'

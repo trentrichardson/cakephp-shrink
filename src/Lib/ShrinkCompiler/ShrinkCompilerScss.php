@@ -9,7 +9,7 @@ class ShrinkCompilerScss extends ShrinkBase implements ShrinkCompilerInterface{
 
 	public $resultType = 'css';
 
-	private $settings = [
+	protected $settings = [
 			'sass'=>[
 					'sass'=>'scssphp', // scssphp to use php version, sass to use cmd line version
 					'path'=>'/usr/bin'

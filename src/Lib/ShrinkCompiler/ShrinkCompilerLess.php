@@ -9,7 +9,7 @@ class ShrinkCompilerLess extends ShrinkBase implements ShrinkCompilerInterface{
 
 	public $resultType = 'css';
 
-	private $settings = [
+	protected $settings = [
 			'less'=>[]
 		];
 

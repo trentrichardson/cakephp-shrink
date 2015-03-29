@@ -8,7 +8,7 @@ class ShrinkCompilerCoffee extends ShrinkBase implements ShrinkCompilerInterface
 
 	public $resultType = 'js';
 
-	private $settings = [
+	protected $settings = [
 			'coffee'=>[
 					'coffee'=>'/usr/local/bin/coffee',
 					'node' => '/usr/local/bin/node',
