@@ -7,7 +7,7 @@
     "license": "MIT",
     "require": {
         "php": ">=5.0",
-        "composer/installers": "*",
+        "composer/installers": "*"
     },
     "support": {
         "source": "https://github.com/trentrichardson/cakephp-shrink"
