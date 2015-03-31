@@ -16,6 +16,8 @@ look into [Mark Story's asset_compress](https://github.com/markstory/asset_compr
 Installation
 ------------
 
+This version is for CakePHP 3, for other versions of CakePHP check the branches on Github.
+
 It is recommended to use composer to install: `"trentrichardson/cakephp-shrink": "dev-cakephp-v3.0"`.
 Then enable your plugin in bootstrap.php `Plugin::load('Shrink');` or `Plugin::loadAll();`.
 
@@ -37,25 +39,26 @@ sass, coffee), and the parameters following the files.
 /**
 * Adds a css file to the file queue
 * @param array/string files - string name of a file or array containing multiple string of files
-* @param bool buffer - false to immediately process and print the file, true to merge with others
+* @param bool immediate - true to immediately process and print the file, false to merge with others
 * @param string how - 'link' to print <link>, 'embed' to use <style>...css code...</style>
-* @return string - when $buffer=false the tag will be printed, "" otherwise
+* @return string - when $immediate=true the tag will be printed, "" otherwise
 */
-$this->Shrink->css($files, $buffer=false, $how='link')
+public function css($files, $immediate=false, $how='link')
 
 /**
 * Adds a js file to the file queue
 * @param array/string files - string name of a file or array containing multiple string of files
-* @param bool buffer - false to immediately process and print the file, true to merge with others
+* @param bool immediate - true to immediately process and print the file, false to merge with others
 * @param string how - 'link' for <script src="">, 'async' for <script src="" async>, 'embed' for <script>...js code...</script>
-* @return string - when $buffer=false the tag will be printed, "" otherwise
+* @return string - when $immediate=true the tag will be printed, "" otherwise
 */
-$this->Shrink->js($files, $buffer=false, $how='link')
+public function js($files, $immediate=false, $how='link')
 
 /**
 * Processes/minify/combines queued files of the requested type.
 * @param string type - 'js' or 'css'. This should be the end result type
 * @param string how - 'link' for <script src="">, 'async' for <script src="" async>, 'embed' for <script>...js code...</script>
+* @param array files - string name of a file or array containing multiple string of files
 * @return string - the <script> or <link>
 */
 $this->Shrink->fetch($type, $how='link')
@@ -66,8 +69,8 @@ Lets say you have a layout, and a view in the users controller.  The view might 
 ```php
 <?php
 	// View/Users/edit.ctp
-	echo $this->Shrink->css(array('users/edit.less'), true);
-	echo $this->Shrink->js(array('users/edit.coffee'), true);
+	$this->Shrink->css(['users/edit.less']);
+	$this->Shrink->js(['users/edit.coffee']);
 ?>
 ```
 
@@ -75,10 +78,10 @@ Then in the layout you have:
 ```php
 <?php
 	// View/Layouts/default.ctp
-	echo $this->Shrink->css(array('bootstrap.css', 'site.less'), true);
+	$this->Shrink->css(['bootstrap.css', 'site.less']);
 	echo $this->Shrink->fetch('css');
 
-	echo $this->Shrink->js(array('jquery.js', 'site.coffee'), true);
+	$this->Shrink->js(['jquery.js', 'site.coffee']);
 	echo $this->Shrink->fetch('js');
 ?>
 ```
@@ -130,13 +133,13 @@ Extending Shrink is extremely simple, and can likely be done with only a few lin
 code.  There are two abstractions, Compilers and Compressors.
 
 Compilers are for file types like Coffee, Less, etc.  These can be found in the
-app/Plugin/Shrink/Lib/ShrinkType/ShrinkCompiler folder. The file and class name goes
+app/Plugin/Shrink/src/Lib/ShrinkCompiler folder. The file and class name goes
 by the file extension.  Less files have a .less extension, so will create
 ShrinkCompilerLess.php.  Each compiler must set the $resultType variable to 'js' or
 'css' (the end result type), and implement the compile method.
 
 Compressors are for minifying the code after it has been compiled to js or css. These
-can be found in app/Plugin/Shrink/Lib/ShrinkType/ShrinkCompressor.  The file and class
+can be found in app/Plugin/Shrink/src/Lib/ShrinkCompressor.  The file and class
 name goes by the option you set in settings (the minifier option for js or css).  So
 if you pass the minifier option for css to be cssmin, the file name will be
 ShrinkCompressorCssmin.php.  Each compressor class must implement the compress method.
@@ -148,7 +151,7 @@ utility class which currently provides a "cmd" method to execute commands.
 License
 -------
 
-Copyright 2013 Trent Richardson
+Copyright 2015 Trent Richardson
 
 You may use this project under MIT or GPL licenses.
 

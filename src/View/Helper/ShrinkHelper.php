@@ -112,44 +112,44 @@ class ShrinkHelper extends Helper{
 	/**
 	* Adds a css file to the file queue
 	* @param array/string files - string name of a file or array containing multiple string of files
-	* @param bool buffer - false to immediately process and print the file, true to merge with others
+	* @param bool immediate - true to immediately process and print the file, false to merge with others
 	* @param string how - 'link' to print <link>, 'embed' to use <style>...css code...</style>
-	* @return string - when $buffer=false the tag will be printed, "" otherwise
+	* @return string - when $immediate=true the tag will be printed, "" otherwise
 	*/
-	public function css($files, $buffer=false, $how='link'){
-		return $this->add('css', $files, $buffer, $how);
+	public function css($files, $immediate=false, $how='link'){
+		return $this->add('css', $files, $immediate, $how);
 	}
 
 	/**
 	* Adds a js file to the file queue
 	* @param array/string files - string name of a file or array containing multiple string of files
-	* @param bool buffer - false to immediately process and print the file, true to merge with others
+	* @param bool immediate - true to immediately process and print the file, false to merge with others
 	* @param string how - 'link' for <script src="">, 'async' for <script src="" async>, 'embed' for <script>...js code...</script>
-	* @return string - when $buffer=false the tag will be printed, "" otherwise
+	* @return string - when $immediate=true the tag will be printed, "" otherwise
 	*/
-	public function js($files, $buffer=false, $how='link'){
-		return $this->add('js', $files, $buffer, $how);
+	public function js($files, $immediate=false, $how='link'){
+		return $this->add('js', $files, $immediate, $how);
 	}
 
 	/**
 	* Adds a file to the file queue, used internally
 	* @param string type - 'js' or 'css'. This should be the end result type
 	* @param array files - string name of a file or array containing multiple string of files
-	* @param bool buffer - false to immediately process and print the file, true to merge with others
+	* @param bool immediate - true to immediately process and print the file, false to merge with others
 	* @param string how - 'link' for <script src="">, 'async' for <script src="" async>, 'embed' for <script>...js code...</script>
-	* @return string - when $buffer=false the tag will be printed, "" otherwise
+	* @return string - when $immediate=true the tag will be printed, "" otherwise
 	*/
-	protected function add($type, $files, $buffer=false, $how='link') {
+	protected function add($type, $files, $immediate=false, $how='link') {
 		if(!is_array($files)){
 			$files = array($files);
 		}
 
-		// not buffer, hold until fetch is called
-		if($buffer === true){
+		// buffering, hold until fetch is called
+		if($immediate === false){
 			$this->files[$type][$this->rendering] = array_merge($this->files[$type][$this->rendering], $files);
 			return '';
 		}
-		// buffer, go ahead and print these out
+		// immediately requested, go ahead and print these out
 		else{
 			return $this->fetch($type, $how, array($type=>array('layout'=>array(), 'view'=>$files)));
 		}
