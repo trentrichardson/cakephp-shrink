@@ -3,12 +3,13 @@ namespace Shrink\Lib\ShrinkCompressor;
 
 use Shrink\Lib\ShrinkCompressor\ShrinkCompressorInterface;
 use Shrink\Lib\ShrinkBase;
-use JSMin;
 
-class ShrinkCompressorJsmin extends ShrinkBase implements ShrinkCompressorInterface{
+class ShrinkCompressorJShrink extends ShrinkBase implements ShrinkCompressorInterface{
 
 	protected $settings = [
-			'jsmin'=>[]
+			'jshrink'=>[
+					'flaggedComments'=>false
+				]
 		];
 
 
@@ -19,7 +20,9 @@ class ShrinkCompressorJsmin extends ShrinkBase implements ShrinkCompressorInterf
 	*/
 	public function compress($code){
 
-		$code = trim(JSMin::minify($code));
+		$code = \JShrink\Minifier::minify($code, [
+					'flaggedComments' => $this->settings['jshrink']['flaggedComments']
+				]);
 
 		return $code;
 	}

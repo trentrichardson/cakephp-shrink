@@ -57,7 +57,7 @@ class ShrinkHelper extends Helper{
 			'js'=>array(
 					'path'=>'js/',        // folder to find src js files
 					'cachePath'=>'js/',   // folder to create cache files
-					'minifier'=>'jsmin'   // minifier to minify, false to leave as is
+					'minifier'=>'jshrink'   // minifier to minify, false to leave as is
 				),
 			'css'=>array(
 					'path'=>'css/',       // folder to find src css files
