@@ -20,9 +20,7 @@ class ShrinkCompressorJshrink extends ShrinkBase implements ShrinkCompressorInte
 	*/
 	public function compress($code){
 
-		$code = \JShrink\Minifier::minify($code, [
-					'flaggedComments' => $this->settings['jshrink']['flaggedComments']
-				]);
+		$code = \JShrink\Minifier::minify($code, $this->settings['jshrink']);
 
 		return $code;
 	}
