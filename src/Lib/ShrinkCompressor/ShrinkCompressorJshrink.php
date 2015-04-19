@@ -4,7 +4,7 @@ namespace Shrink\Lib\ShrinkCompressor;
 use Shrink\Lib\ShrinkCompressor\ShrinkCompressorInterface;
 use Shrink\Lib\ShrinkBase;
 
-class ShrinkCompressorJShrink extends ShrinkBase implements ShrinkCompressorInterface{
+class ShrinkCompressorJshrink extends ShrinkBase implements ShrinkCompressorInterface{
 
 	protected $settings = [
 			'jshrink'=>[
