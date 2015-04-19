@@ -6,6 +6,6 @@ namespace Shrink\Lib\ShrinkCompressor;
 */
 interface ShrinkCompressorInterface{
 
-    public function compress($file);
+    public function compress($code);
 
 }
