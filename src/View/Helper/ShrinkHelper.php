@@ -141,7 +141,7 @@ class ShrinkHelper extends Helper{
 	*/
 	protected function add($type, $files, $immediate=false, $how='link') {
 		if(!is_array($files)){
-			$files = array($files);
+			$files = [ $files ];
 		}
 
 		// buffering, hold until fetch is called

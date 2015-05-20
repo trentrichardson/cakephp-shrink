@@ -1,0 +1,200 @@
+<?php
+namespace Shrink\Test\TestCase\Lib;
+
+use Cake\Filesystem\Folder;
+use Cake\Filesystem\File;
+use Cake\TestSuite\TestCase;
+use Shrink\Lib\ShrinkType;
+
+class ShrinkCompilerTest extends TestCase
+{
+
+	/**
+	* setup any prelimiary structure before a test
+	*
+	* @return void
+	*/
+	public function setUp() {
+		parent::setUp();
+
+	}
+
+
+	/**
+	* do any break down after a test
+	*
+	* @return void
+	*/
+	public function tearDown() {
+		parent::tearDown();
+
+	}
+
+
+	/**
+	* test that compiler "css" works
+	*
+	* @return void
+	*/
+	public function testCompilerCss(){
+		$compiler = ShrinkType::getCompiler('css', []);
+		
+		// verify the instance
+		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
+
+		// run against css
+		$file = new File(WWW_ROOT .'css/base.css');
+		$result = $compiler->compile($file);
+		$expect = $file->read();
+		unset($file);
+
+		$this->assertEquals($result, $expect);
+	}
+
+
+	/**
+	* test that compiler "js" works
+	*
+	* @return void
+	*/
+	public function testCompilerJs(){
+		$compiler = ShrinkType::getCompiler('js', []);
+		
+		// verify the instance
+		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
+
+		// run against js
+		$file = new File(WWW_ROOT .'js/base.js');
+		$result = $compiler->compile($file);
+		$expect = $file->read();
+		unset($file);
+
+		$this->assertEquals($result, $expect);
+	}
+
+
+	/**
+	* test that compiler "less" works
+	*
+	* @return void
+	*/
+	public function testCompilerLess(){
+		$compiler = ShrinkType::getCompiler('less', []);
+		
+		// verify the instance
+		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
+
+		// get the result
+		$file = new File(WWW_ROOT .'css/base.less');
+		$result = $compiler->compile($file);
+		unset($file);
+
+		// get the expected result
+		$cssfile = new File(WWW_ROOT .'css/base.less.css');
+		$expect = $cssfile->read();
+		unset($cssfile);
+
+		$this->assertEquals($result, $expect);
+	}
+
+
+	/**
+	* test that compiler "scss" works
+	*
+	* @return void
+	*/
+	public function testCompilerScss(){
+		$compiler = ShrinkType::getCompiler('scss', []);
+		
+		// verify the instance
+		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
+
+		// get the result
+		$file = new File(WWW_ROOT .'css/base.scss');
+		$result = $compiler->compile($file);
+		unset($file);
+
+		// get the expected result
+		$cssfile = new File(WWW_ROOT .'css/base.scss.css');
+		$expect = $cssfile->read();
+		unset($cssfile);
+
+		$this->assertEquals($result, $expect);
+	}
+
+
+	/**
+	* test that compiler "scss" works with command line version
+	*
+	* @return void
+	*/
+	public function testCompilerScssCmd(){
+		$compiler = ShrinkType::getCompiler('scss', ['sass'=>'sass']);
+		
+		// verify the instance
+		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
+
+		// get the result
+		$file = new File(WWW_ROOT .'css/base.scss');
+		$result = $compiler->compile($file);
+		unset($file);
+
+		// get the expected result
+		$cssfile = new File(WWW_ROOT .'css/base.scss.css');
+		$expect = $cssfile->read();
+		unset($cssfile);
+
+		$this->assertEquals($result, $expect);
+	}
+
+
+	/**
+	* test that compiler "scss" works
+	*
+	* @return void
+	*/
+	public function testCompilerSass(){
+		$compiler = ShrinkType::getCompiler('sass', []);
+		
+		// verify the instance
+		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
+
+		// get the result
+		$file = new File(WWW_ROOT .'css/base.sass');
+		$result = $compiler->compile($file);
+		unset($file);
+
+		// get the expected result
+		$cssfile = new File(WWW_ROOT .'css/base.sass.css');
+		$expect = $cssfile->read();
+		unset($cssfile);
+
+		$this->assertEquals($result, $expect);
+	}
+
+
+	/**
+	* test that compiler "scss" works
+	*
+	* @return void
+	*/
+	public function testCompilerCoffee(){
+		$compiler = ShrinkType::getCompiler('coffee', []);
+		
+		// verify the instance
+		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
+
+		// get the result
+		$file = new File(WWW_ROOT .'js/base.coffee');
+		$result = $compiler->compile($file);
+		unset($file);
+
+		// get the expected result
+		$jsfile = new File(WWW_ROOT .'js/base.coffee.js');
+		$jsfile->write($result);
+		$expect = $jsfile->read();
+		unset($jsfile);
+
+		$this->assertEquals($result, $expect);
+	}
+}

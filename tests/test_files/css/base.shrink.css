@@ -1,0 +1,7 @@
+@charset "utf-8";
+/* base.css */
+*{margin:0;padding:0;border:0}body{font:90% Helvetica, sans-serif;padding:20px}
+/* base.less */
+*{margin:0;padding:0;border:0}body{font:90% Helvetica, sans-serif;padding:20px}body a{text-decoration:none}body a:hover{text-decoration:underline}
+/* base.scss */
+*{margin:0;padding:0;border:0}body{font:90% Helvetica, sans-serif;padding:20px}body a{text-decoration:none}body a:hover{text-decoration:underline}

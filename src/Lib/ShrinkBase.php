@@ -26,9 +26,9 @@ class ShrinkBase{
     * @param array $env - key value pairs of environment variables to be set
     * @return string - output from the command
     */
-    public function cmd($cmd, $input=null, $env=array()){
+    public function cmd($cmd, $input=null, $env=[]){
         $out = '';
-        $descriptorSpec = array(0=>array('pipe', 'r'), 1=>array('pipe', 'w'), 2=>array('pipe', 'w'));
+        $descriptorSpec = [ 0=>['pipe', 'r'], 1=>['pipe', 'w'], 2=>['pipe', 'w'] ];
 
         $process = proc_open($cmd, $descriptorSpec, $pipes, null, $env);
 

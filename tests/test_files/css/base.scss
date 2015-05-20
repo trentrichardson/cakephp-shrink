@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+@import "base.import.scss";
+
+/* elements */
+body{
+	font: 90% Helvetica, sans-serif;
+	padding: 20px;
+
+	// what anchors should be..
+	a{
+		text-decoration: none;
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+}
