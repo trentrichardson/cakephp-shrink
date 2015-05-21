@@ -94,7 +94,7 @@ class ShrinkCompilerTest extends TestCase
 		$expect = $cssfile->read();
 		unset($cssfile);
 
-		$this->assertEquals($result, $expect);
+		$this->assertEquals($result, $expect, 'Compiled less does not match. Ensure lessphp package is available via composer.');
 	}
 
 
@@ -119,7 +119,7 @@ class ShrinkCompilerTest extends TestCase
 		$expect = $cssfile->read();
 		unset($cssfile);
 
-		$this->assertEquals($result, $expect);
+		$this->assertEquals($result, $expect, 'Compiled scss does not match. Ensure sassphp package is available via composer.');
 	}
 
 
@@ -144,7 +144,7 @@ class ShrinkCompilerTest extends TestCase
 		$expect = $cssfile->read();
 		unset($cssfile);
 
-		$this->assertEquals($result, $expect);
+		$this->assertEquals($result, $expect, 'Compiled scss does not match. Ensure Sass command line utility is available. gem install sass');
 	}
 
 
@@ -169,7 +169,7 @@ class ShrinkCompilerTest extends TestCase
 		$expect = $cssfile->read();
 		unset($cssfile);
 
-		$this->assertEquals($result, $expect);
+		$this->assertEquals($result, $expect, 'Compiled sass does not match. Ensure Sass command line utility is available. gem install sass');
 	}
 
 
@@ -195,6 +195,6 @@ class ShrinkCompilerTest extends TestCase
 		$expect = $jsfile->read();
 		unset($jsfile);
 
-		$this->assertEquals($result, $expect);
+		$this->assertEquals($result, $expect, 'Compiled coffee does not match. Ensure Coffee script command line utility is available. npm install -g coffee-script');
 	}
 }
