@@ -1,0 +1,9 @@
+/* 
+	Do a simple reset 
+*/
+* { margin: 0; padding: 0; border: 0; }
+
+/* elements */
+body { font: 90% Helvetica, sans-serif; padding: 20px; }
+body a { text-decoration: none; }
+body a:hover { text-decoration: underline; }
