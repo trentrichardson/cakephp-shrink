@@ -2,10 +2,7 @@
 namespace Shrink\Test\TestCase\View\Helper;
 
 use Shrink\View\Helper\ShrinkHelper;
-use Cake\Core\Configure;
-use Cake\Core\Plugin;
 use Cake\View\View;
-use Cake\Filesystem\Folder;
 use Cake\Filesystem\File;
 use Cake\TestSuite\TestCase;
 

@@ -1,7 +1,6 @@
 <?php
 namespace Shrink\Test\TestCase\Lib;
 
-use Cake\Filesystem\Folder;
 use Cake\Filesystem\File;
 use Cake\TestSuite\TestCase;
 use Shrink\Lib\ShrinkType;
