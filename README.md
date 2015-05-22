@@ -148,6 +148,24 @@ The easiest way to extend a compiler or compressor is to simply copy one of the 
 versions.  You will also notice compilers and compressors extend ShrinkBase.  This is a
 utility class which currently provides a "cmd" method to execute commands.
 
+Testing
+-------
+
+If you are making changes it is a good idea to create tests for your changes and ensure 
+they are in a passing state.  Tests are run via phpunit.  Since cakephp-shrink provides 
+support for command line utilities and composer packages you must install them before 
+tests can run.
+
+```sh
+composer install
+npm install -g less
+npm install -g coffee-script
+gem install sass
+```
+
+Depending on your setup you may need to use sudo.  To run tests simply call `phpunit` 
+or `vendor/bin/phpunit`.
+
 License
 -------
 
