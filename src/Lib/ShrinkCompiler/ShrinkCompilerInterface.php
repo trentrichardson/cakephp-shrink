@@ -6,6 +6,8 @@ namespace Shrink\Lib\ShrinkCompiler;
 */
 interface ShrinkCompilerInterface{
 
+    public function isAvailable();
+
     public function compile($file);
 
 }

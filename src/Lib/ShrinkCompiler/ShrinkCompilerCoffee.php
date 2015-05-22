@@ -10,11 +10,34 @@ class ShrinkCompilerCoffee extends ShrinkBase implements ShrinkCompilerInterface
 
 	protected $settings = [
 			'coffee'=>[
-					'coffee'=>'/usr/local/bin/coffee',
-					'node' => '/usr/local/bin/node',
-					'node_path' => '/usr/local/lib/node_modules'
+					'coffee'=>'coffee',
+					'path'=>null, // should be something like: '/usr/local/bin/coffee'
+					'node'=>null  // should be something like: '/usr/local/bin/node'
 				]
 		];
+
+
+	/**
+	* Determine if there is support for this compiler
+	* @return boolean - true if there is support
+	*/
+	public function isAvailable(){
+		$isAvailable = false;
+
+		if($this->settings['coffee']['path'] && $this->settings['coffee']['node']){
+			$isAvailable = true;
+		}
+		else{
+			$path = $this->getPath($this->settings['coffee']['coffee']);
+			$node = $this->getPath('node');
+			if($path !== false && $node !== false){
+				$this->settings['coffee']['path'] = $path;
+				$this->settings['coffee']['node'] = $node;
+				$isAvailable = true;
+			}
+		}
+		return $isAvailable;
+	}
 
 
 	/**
@@ -26,10 +49,11 @@ class ShrinkCompilerCoffee extends ShrinkBase implements ShrinkCompilerInterface
 		$code = '';
 
 		// compile coffee script
-		$cmd = $this->settings['coffee']['node'] .' '. $this->settings['coffee']['coffee'] .' -c -p '. $file->path;
-		$env = array('NODE_PATH'=>$this->settings['coffee']['node_path']);
-		$code = $this->cmd($cmd, null, $env);
-
+		if($this->isAvailable()){
+			$cmd = $this->settings['coffee']['node'] .' '. $this->settings['coffee']['path'] .' -c -p '. $file->path;
+			$code = $this->cmd($cmd, null);
+		}
+		
 		return $code;
 	}
 

@@ -15,7 +15,7 @@ class ShrinkBase{
     * @return void
     */
     function __construct($options=[]){
-        $this->settings = array_merge_recursive($this->settings, $options);
+        $this->settings = array_replace_recursive($this->settings, $options);
     }
 
 
@@ -39,12 +39,36 @@ class ShrinkBase{
             $out = stream_get_contents($pipes[1]);
             fclose($pipes[1]);
 
-            $this->run_error = stream_get_contents($pipes[2]);
+            $this->error = stream_get_contents($pipes[2]);
             fclose($pipes[2]);
             proc_close($process);
         }
         return $out;
     }
+
+
+    /**
+    * Determine the path to an executable file
+    * @param string $exc name of the executable to find
+    * @return mixed - file path or false if not available
+    */
+    protected function getPath($exc){
+        $ret = false;
+
+        // build the command dependent on windows or linux
+        $cmd = 'which '. $exc;
+        if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'){
+            $cmd = 'where '. $exc;
+        }
+
+        // determine if the exec is available
+        $path = trim(shell_exec(escapeshellcmd($cmd)));
+        if((is_link($path) || is_file($path)) && is_executable($path)){
+            $ret = $path;
+        }
+        return $ret;
+    }
+
 }
 
 

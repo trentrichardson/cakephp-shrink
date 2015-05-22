@@ -128,7 +128,7 @@ class ShrinkCompilerTest extends TestCase
 	* @return void
 	*/
 	public function testCompilerScssCmd(){
-		$compiler = ShrinkType::getCompiler('scss', ['sass'=>'sass']);
+		$compiler = ShrinkType::getCompiler('scss', ['sass'=>['sass'=>'sass']]);
 		
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
@@ -139,7 +139,7 @@ class ShrinkCompilerTest extends TestCase
 		unset($file);
 
 		// get the expected result
-		$cssfile = new File(WWW_ROOT .'css/base.scss.css');
+		$cssfile = new File(WWW_ROOT .'css/base.scsscmd.css');
 		$expect = $cssfile->read();
 		unset($cssfile);
 
@@ -190,7 +190,6 @@ class ShrinkCompilerTest extends TestCase
 
 		// get the expected result
 		$jsfile = new File(WWW_ROOT .'js/base.coffee.js');
-		$jsfile->write($result);
 		$expect = $jsfile->read();
 		unset($jsfile);
 

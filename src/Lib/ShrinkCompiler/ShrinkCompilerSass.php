@@ -10,10 +10,31 @@ class ShrinkCompilerSass extends ShrinkBase implements ShrinkCompilerInterface{
 
 	protected $settings = [
 			'sass'=>[
-					'sass'=>'/usr/bin/sass',
-					'path'=>'/usr/bin'
+					'sass'=>'sass',
+					'path'=>null       // should be something like: '/usr/bin/sass'
 				]
 		];
+
+
+	/**
+	* Determine if there is support for this compiler
+	* @return boolean - true if there is support
+	*/
+	public function isAvailable(){
+		$isAvailable = false;
+
+		if($this->settings['sass']['path']){
+			$isAvailable = true;
+		}
+		else{
+			$path = $this->getPath($this->settings['sass']['sass']);
+			if($path !== false){
+				$this->settings['sass']['path'] = $path;
+				$isAvailable = true;
+			}
+		}
+		return $isAvailable;
+	}
 
 
 	/**
@@ -26,9 +47,10 @@ class ShrinkCompilerSass extends ShrinkBase implements ShrinkCompilerInterface{
 		$style = 'compact';
 
 		// compile scss
-		$cmd = $this->settings['sass']['sass'] .' -t '. $style .' '. $file->path;
-		$env = array('PATH'=>$this->settings['sass']['path']);
-		$code = $this->cmd($cmd, null, $env);
+		if($this->isAvailable()){
+			$cmd = $this->settings['sass']['path'] .' -t '. $style .' '. $file->path;
+			$code = $this->cmd($cmd, null);
+		}
 
 		return $code;
 	}

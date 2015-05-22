@@ -13,13 +13,24 @@ class ShrinkCompressorCssmin extends ShrinkBase implements ShrinkCompressorInter
 
 
 	/**
+	* Determine if there is support for this compressor
+	* @return boolean - true if there is support
+	*/
+	public function isAvailable(){
+		return class_exists('CssMin');
+	}
+
+
+	/**
 	* Processes/minify/combines queued files of the requested type.
 	* @param string $code - unminified code string
 	* @return string - code string minified/processed as requested
 	*/
 	public function compress($code){
-
-        $code = CssMin::minify($code);
+		
+		if($this->isAvailable()){
+        	$code = CssMin::minify($code);
+        }
 
 		return $code;
 	}

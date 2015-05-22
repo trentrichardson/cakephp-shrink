@@ -15,20 +15,31 @@ class ShrinkCompilerLess extends ShrinkBase implements ShrinkCompilerInterface{
 
 
 	/**
+	* Determine if there is support for this compiler
+	* @return boolean - true if there is support
+	*/
+	public function isAvailable(){
+		return class_exists('lessc');
+	}
+
+
+	/**
 	* Processes/minify/combines queued files of the requested type.
 	* @param CakeFile file - 'js' or 'css'. This should be the end result type
 	* @return string - code string minified/processed as requested
 	*/
 	public function compile($file){
 
-		$less = new lessc;
+		if($this->isAvailable()){
+			$less = new lessc;
 
-		//$less->setFormatter('compressed');
-		$less->setPreserveComments(true);
-		//$less->setImportDir($file->Folder->path);
+			//$less->setFormatter('compressed');
+			$less->setPreserveComments(true);
+			//$less->setImportDir($file->Folder->path);
 
-		$code = $less->compileFile($file->path);
-
+			$code = $less->compileFile($file->path);
+		}
+		
 		return $code;
 	}
 }
