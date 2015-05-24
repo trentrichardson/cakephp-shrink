@@ -103,6 +103,36 @@ class ShrinkCompilerTest extends TestCase
 
 
 	/**
+	* test that compiler "less" works
+	*
+	* @return void
+	*/
+	public function testCompilerLessCmd(){
+		$compiler = ShrinkType::getCompiler('less', ['less'=>['less'=>'lessc']]);
+		
+		// verify the instance
+		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
+
+		if($compiler->isAvailable()){
+			// get the result
+			$file = new File(WWW_ROOT .'css/base.less');
+			$result = $compiler->compile($file);
+			unset($file);
+
+			// get the expected result
+			$cssfile = new File(WWW_ROOT .'css/base.lesscmd.css');
+			$expect = $cssfile->read();
+			unset($cssfile);
+
+			$this->assertEquals($result, $expect, 'Compiled less does not match. Ensure lessc command line utility is available. npm install -g less');
+		}
+		else{
+			echo "\nSkipping less tests, no lessc available via composer.\n";
+		}
+	}
+
+
+	/**
 	* test that compiler "scss" works
 	*
 	* @return void
