@@ -20,10 +20,10 @@ class ShrinkHelper extends Helper{
 	/**
 	* @var array - master queue of files
 	*/
-	private $files = array(
-			'css'=>array('layout'=>array(), 'view'=>array()),
-			'js'=>array('layout'=>array(), 'view'=>array())
-		);
+	private $files = [
+			'css'=>[ 'layout'=>[], 'view'=>[] ],
+			'js'=>[ 'layout'=>[], 'view'=>[] ]
+		];
 
 	/**
 	* @var string - what is currently rendering 'view' or 'layout'
@@ -33,12 +33,12 @@ class ShrinkHelper extends Helper{
 	/**
 	* @var array - stores the instances of the compilers
 	*/
-	private $compilers = array();
+	private $compilers = [];
 
 	/**
 	* @var array - stores the instances of the compressors
 	*/
-	private $compressors = array();
+	private $compressors = [];
 
 	/**
 	* @var string - if no url rewrites this is the extra path
@@ -53,22 +53,22 @@ class ShrinkHelper extends Helper{
 	/**
 	* @var array - active settings for this instance.  Merged with passed options
 	*/
-	public $settings = array(
-			'js'=>array(
+	public $settings = [
+			'js'=>[
 					'path'=>'js/',        // folder to find src js files
 					'cachePath'=>'js/',   // folder to create cache files
 					'minifier'=>'jshrink'   // minifier to minify, false to leave as is
-				),
-			'css'=>array(
+				],
+			'css'=>[
 					'path'=>'css/',       // folder to find src css files
 					'cachePath'=>'css/',  // folder to create cache files
 					'minifier'=>'cssmin', // minifier name to minify, false to leave as is
 					'charset'=>'utf-8'    // charset to use
-				),
+				],
 			'url'=>'',                     // url without ending /, incase you access from another domain
 			'prefix'=>'shrink_',           // prefix the beginning of cache files
 			'debugLevel'=>1                // compared against Core.debug, eq will recompile, > will not minify
-		);
+		];
 
 	/**
 	* Constructor - merges options with $this->settings, detects debug level
@@ -76,7 +76,7 @@ class ShrinkHelper extends Helper{
 	* @param array $options - user specified options
 	* @return void
 	*/
-	public function __construct(View $View, $options = array()) {
+	public function __construct(View $View, $options = []) {
 		parent::__construct($View,$options);
 
 		// URL Rewrites are switched off, so wee need to add this extra path.
@@ -151,7 +151,7 @@ class ShrinkHelper extends Helper{
 		}
 		// immediately requested, go ahead and print these out
 		else{
-			return $this->fetch($type, $how, array($type=>array('layout'=>array(), 'view'=>$files)));
+			return $this->fetch($type, $how, [ $type=>[ 'layout'=>[], 'view'=>$files]]);
 		}
 	}
 
@@ -162,7 +162,7 @@ class ShrinkHelper extends Helper{
 	* @param array files - string name of a file or array containing multiple string of files
 	* @return string - the <script> or <link>
 	*/
-	function fetch($type, $how='link', $files=array()) {
+	function fetch($type, $how='link', $files=[]) {
 		if($type == 'script'){
 			$type='js';
 		}
@@ -187,10 +187,10 @@ class ShrinkHelper extends Helper{
 		$maxAge = 0;
 		foreach($files[$type] as $k=>$v){
 			$tmpf = new File(preg_replace('/(\/+|\\+)/', DS, WWW_ROOT .DS. ($v[0]=='/'? '':$this->settings[$type]['path']) .DS. $v));
-			$files[$type][$k] = array(
+			$files[$type][$k] = [
 					'file'=>$tmpf,
 					'rel_path'=>$v
-				);
+				];
 			$srcMod = $tmpf->lastChange();
 			if($srcMod > $maxAge){
 				$maxAge = $srcMod;
@@ -244,7 +244,7 @@ class ShrinkHelper extends Helper{
 			$cacheFileObj->write($output);
 		}
 		// files will be @$this->files, so this clears them
-		$files[$type] = array('layout'=>array(), 'view'=>array());
+		$files[$type] = [ 'layout'=>[], 'view'=>[] ];
 
 		// print them how the user wants
 		if($how == 'embed'){
