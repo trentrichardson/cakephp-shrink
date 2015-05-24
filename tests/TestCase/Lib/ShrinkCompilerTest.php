@@ -83,17 +83,22 @@ class ShrinkCompilerTest extends TestCase
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
 
-		// get the result
-		$file = new File(WWW_ROOT .'css/base.less');
-		$result = $compiler->compile($file);
-		unset($file);
+		if($compiler->isAvailable()){
+			// get the result
+			$file = new File(WWW_ROOT .'css/base.less');
+			$result = $compiler->compile($file);
+			unset($file);
 
-		// get the expected result
-		$cssfile = new File(WWW_ROOT .'css/base.less.css');
-		$expect = $cssfile->read();
-		unset($cssfile);
+			// get the expected result
+			$cssfile = new File(WWW_ROOT .'css/base.less.css');
+			$expect = $cssfile->read();
+			unset($cssfile);
 
-		$this->assertEquals($result, $expect, 'Compiled less does not match. Ensure lessphp package is available via composer.');
+			$this->assertEquals($result, $expect, 'Compiled less does not match. Ensure lessphp package is available via composer.');
+		}
+		else{
+			echo "Skipping less tests, no lessphp available via composer.";
+		}
 	}
 
 
@@ -108,17 +113,22 @@ class ShrinkCompilerTest extends TestCase
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
 
-		// get the result
-		$file = new File(WWW_ROOT .'css/base.scss');
-		$result = $compiler->compile($file);
-		unset($file);
+		if($compiler->isAvailable()){
+			// get the result
+			$file = new File(WWW_ROOT .'css/base.scss');
+			$result = $compiler->compile($file);
+			unset($file);
 
-		// get the expected result
-		$cssfile = new File(WWW_ROOT .'css/base.scss.css');
-		$expect = $cssfile->read();
-		unset($cssfile);
+			// get the expected result
+			$cssfile = new File(WWW_ROOT .'css/base.scss.css');
+			$expect = $cssfile->read();
+			unset($cssfile);
 
-		$this->assertEquals($result, $expect, 'Compiled scss does not match. Ensure sassphp package is available via composer.');
+			$this->assertEquals($result, $expect, 'Compiled scss does not match. Ensure sassphp package is available via composer.');
+		}
+		else{
+			echo "Skipping Scss tests, no sassphp available via composer.";
+		}
 	}
 
 
@@ -133,17 +143,22 @@ class ShrinkCompilerTest extends TestCase
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
 
-		// get the result
-		$file = new File(WWW_ROOT .'css/base.scss');
-		$result = $compiler->compile($file);
-		unset($file);
+		if($compiler->isAvailable()){
+			// get the result
+			$file = new File(WWW_ROOT .'css/base.scss');
+			$result = $compiler->compile($file);
+			unset($file);
 
-		// get the expected result
-		$cssfile = new File(WWW_ROOT .'css/base.scsscmd.css');
-		$expect = $cssfile->read();
-		unset($cssfile);
+			// get the expected result
+			$cssfile = new File(WWW_ROOT .'css/base.scsscmd.css');
+			$expect = $cssfile->read();
+			unset($cssfile);
 
-		$this->assertEquals($result, $expect, 'Compiled scss does not match. Ensure Sass command line utility is available. gem install sass');
+			$this->assertEquals($result, $expect, 'Compiled scss does not match. Ensure Sass command line utility is available. gem install sass');
+		}
+		else{
+			echo "Skipping Scss tests, no scss available: gem install sass";
+		}
 	}
 
 
@@ -158,17 +173,22 @@ class ShrinkCompilerTest extends TestCase
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
 
-		// get the result
-		$file = new File(WWW_ROOT .'css/base.sass');
-		$result = $compiler->compile($file);
-		unset($file);
+		if($compiler->isAvailable()){
+			// get the result
+			$file = new File(WWW_ROOT .'css/base.sass');
+			$result = $compiler->compile($file);
+			unset($file);
 
-		// get the expected result
-		$cssfile = new File(WWW_ROOT .'css/base.sass.css');
-		$expect = $cssfile->read();
-		unset($cssfile);
+			// get the expected result
+			$cssfile = new File(WWW_ROOT .'css/base.sass.css');
+			$expect = $cssfile->read();
+			unset($cssfile);
 
-		$this->assertEquals($result, $expect, 'Compiled sass does not match. Ensure Sass command line utility is available. gem install sass');
+			$this->assertEquals($result, $expect, 'Compiled sass does not match. Ensure Sass command line utility is available. gem install sass');
+		}
+		else{
+			echo "Skipping Sass tests, no sass available: gem install sass";
+		}
 	}
 
 
@@ -183,16 +203,21 @@ class ShrinkCompilerTest extends TestCase
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
 
-		// get the result
-		$file = new File(WWW_ROOT .'js/base.coffee');
-		$result = $compiler->compile($file);
-		unset($file);
+		if($compiler->isAvailable()){
+			// get the result
+			$file = new File(WWW_ROOT .'js/base.coffee');
+			$result = $compiler->compile($file);
+			unset($file);
 
-		// get the expected result
-		$jsfile = new File(WWW_ROOT .'js/base.coffee.js');
-		$expect = $jsfile->read();
-		unset($jsfile);
+			// get the expected result
+			$jsfile = new File(WWW_ROOT .'js/base.coffee.js');
+			$expect = $jsfile->read();
+			unset($jsfile);
 
-		$this->assertEquals($result, $expect, 'Compiled coffee does not match. Ensure Coffee script command line utility is available. npm install -g coffee-script');
+			$this->assertEquals($result, $expect, 'Compiled coffee does not match. Ensure Coffee script command line utility is available. npm install -g coffee-script');
+		}
+		else{
+			echo "Skipping Coffee Script tests, no coffee available: npm install -g coffee-script";
+		}
 	}
 }
