@@ -50,7 +50,6 @@ class ShrinkCompilerSass extends ShrinkBase implements ShrinkCompilerInterface{
 		if($this->isAvailable()){
 			$cmd = $this->settings['sass']['path'] .' -t '. $style .' '. $file->path;
 			$code = $this->cmd($cmd, null);
-			var_dump([$cmd, $code, $this->_error]);
 		}
 
 		return $code;
