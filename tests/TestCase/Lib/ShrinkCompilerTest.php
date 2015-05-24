@@ -97,7 +97,7 @@ class ShrinkCompilerTest extends TestCase
 			$this->assertEquals($result, $expect, 'Compiled less does not match. Ensure lessphp package is available via composer.');
 		}
 		else{
-			echo "Skipping less tests, no lessphp available via composer.";
+			echo "\nSkipping less tests, no lessphp available via composer.\n";
 		}
 	}
 
@@ -127,7 +127,7 @@ class ShrinkCompilerTest extends TestCase
 			$this->assertEquals($result, $expect, 'Compiled scss does not match. Ensure sassphp package is available via composer.');
 		}
 		else{
-			echo "Skipping Scss tests, no sassphp available via composer.";
+			echo "\nSkipping Scss tests, no sassphp available via composer.\n";
 		}
 	}
 
@@ -157,7 +157,7 @@ class ShrinkCompilerTest extends TestCase
 			$this->assertEquals($result, $expect, 'Compiled scss does not match. Ensure Sass command line utility is available. gem install sass');
 		}
 		else{
-			echo "Skipping Scss tests, no scss available: gem install sass";
+			echo "\nSkipping Scss tests, no scss available: gem install sass\n";
 		}
 	}
 
@@ -187,7 +187,7 @@ class ShrinkCompilerTest extends TestCase
 			$this->assertEquals($result, $expect, 'Compiled sass does not match. Ensure Sass command line utility is available. gem install sass');
 		}
 		else{
-			echo "Skipping Sass tests, no sass available: gem install sass";
+			echo "\nSkipping Sass tests, no sass available: gem install sass\n";
 		}
 	}
 
@@ -217,7 +217,7 @@ class ShrinkCompilerTest extends TestCase
 			$this->assertEquals($result, $expect, 'Compiled coffee does not match. Ensure Coffee script command line utility is available. npm install -g coffee-script');
 		}
 		else{
-			echo "Skipping Coffee Script tests, no coffee available: npm install -g coffee-script";
+			echo "\nSkipping Coffee Script tests, no coffee available: npm install -g coffee-script\n";
 		}
 	}
 }

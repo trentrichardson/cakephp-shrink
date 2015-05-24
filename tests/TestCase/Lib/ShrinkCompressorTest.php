@@ -84,7 +84,7 @@ class ShrinkCompressorTest extends TestCase
 			$this->assertEquals($result, $expect, 'Compressed css does not match. Ensure CssMin package is available via composer.');
 		}
 		else{
-			echo "Skipping cssmin tests, no CssMin available via composer.";
+			echo "\nSkipping cssmin tests, no CssMin available via composer.\n";
 		}
 	}
 
@@ -115,7 +115,7 @@ class ShrinkCompressorTest extends TestCase
 			$this->assertEquals($result, $expect, 'Compressed js does not match. Ensure jshrink package is available via composer.');
 		}
 		else{
-			echo "Skipping Jshrink tests, no Jshrink available via composer.";
+			echo "\nSkipping Jshrink tests, no Jshrink available via composer.\n";
 		}
 	}
 }
