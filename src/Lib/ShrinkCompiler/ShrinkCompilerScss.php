@@ -58,8 +58,8 @@ class ShrinkCompilerScss extends ShrinkBase implements ShrinkCompilerInterface{
 				$code = $scss->compile($file->read());
 			}
 			else{ // cmd line version
-				$cmd = $this->settings['sass']['sass'] .' -t '. $style .' '. $file->path;
-				$env = [ 'PATH'=>'/usr/bin:'. pathinfo($this->settings['sass']['path'], PATHINFO_DIRNAME) ];
+				$cmd = $this->settings['sass']['path'] .' -t '. $style .' '. $file->path;
+				$env = [ 'PATH'=>pathinfo($this->settings['sass']['path'], PATHINFO_DIRNAME) ];
 				$code = $this->cmd($cmd, null, $env);
 				var_dump([$cmd,$env,$this->_error]);
 				// $cmd = $this->settings['sass']['path'] .' -t '. $style .' '. $file->path;
