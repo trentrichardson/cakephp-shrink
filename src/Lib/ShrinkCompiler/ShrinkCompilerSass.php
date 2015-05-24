@@ -31,6 +31,7 @@ class ShrinkCompilerSass extends ShrinkBase implements ShrinkCompilerInterface{
 			if($path !== false){
 				$this->settings['sass']['path'] = $path;
 				$isAvailable = true;
+				var_dump($this->settings['sass']['path']);
 			}
 		}
 		return $isAvailable;
