@@ -9,6 +9,7 @@ before_script:
   - npm install -g coffee-script@1.9.2
   - npm install -g less@2.5.1
   - gem install sass -v 3.4.14
+  - gem regenerate_binstubs
   - phpenv rehash
 
 install:
