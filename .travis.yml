@@ -11,8 +11,8 @@ before_script:
   - rvm use 2.1.0 --install --binary --fuzzy
   - PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
   - gem install --user-install executable-hooks
-  - gem install sass -v 3.4.14
   - gem regenerate_binstubs
+  - gem install sass -v 3.4.14
   - phpenv rehash
 
 install:
