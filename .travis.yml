@@ -10,7 +10,9 @@ before_script:
   - npm install -g less@2.5.1
   - rvm use 2.1.0 --install --binary --fuzzy
   - PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+  - gem regenerate_binstubs
   - sudo ln -s `which ruby_executable_hooks` /usr/bin/ruby_executable_hooks
+  - sudo ln -s `which ruby` /usr/bin/ruby
   - gem install sass -v 3.4.14
   - phpenv rehash
 
