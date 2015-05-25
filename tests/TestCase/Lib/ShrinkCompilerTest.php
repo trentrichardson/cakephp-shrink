@@ -223,7 +223,7 @@ class ShrinkCompilerTest extends TestCase
 
 
 	/**
-	* test that compiler "scss" works
+	* test that compiler "coffee" works
 	*
 	* @return void
 	*/
@@ -248,6 +248,36 @@ class ShrinkCompilerTest extends TestCase
 		}
 		else{
 			echo "\nSkipping Coffee Script tests, no coffee available: npm install -g coffee-script\n";
+		}
+	}
+
+
+	/**
+	* test that compiler "ts" works
+	*
+	* @return void
+	*/
+	public function testCompilerTypescript(){
+		$compiler = ShrinkType::getCompiler('ts', []);
+		
+		// verify the instance
+		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
+
+		if($compiler->isAvailable()){
+			// get the result
+			$file = new File(WWW_ROOT .'js/base.ts');
+			$result = $compiler->compile($file);
+			unset($file);
+
+			// get the expected result
+			$jsfile = new File(WWW_ROOT .'js/base.ts.js');
+			$expect = $jsfile->read();
+			unset($jsfile);
+
+			$this->assertEquals($result, $expect, 'Compiled Typescript does not match. Ensure Typescript script command line utility is available. npm install -g typescript');
+		}
+		else{
+			echo "\nSkipping Typescript tests, no coffee available: npm install -g typescript\n";
 		}
 	}
 }
