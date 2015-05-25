@@ -160,6 +160,7 @@ tests can run.
 composer install
 npm install -g less
 npm install -g coffee-script
+npm install -g typescript
 gem install sass
 ```
 
