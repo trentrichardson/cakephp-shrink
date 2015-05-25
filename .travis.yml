@@ -5,10 +5,16 @@ php:
   - 5.5
   - 5.6
 
+rvm:
+  - 2.1.0
+
+gemfile:
+  - Gemfile
+
 before_script:
   - npm install -g coffee-script@1.9.2
   - npm install -g less@2.5.1
-#  - gem install sass -v 3.4.14
+  - gem install sass -v 3.4.14
   - phpenv rehash
 
 install:
