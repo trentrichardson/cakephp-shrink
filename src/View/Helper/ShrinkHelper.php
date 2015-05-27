@@ -1,7 +1,7 @@
 <?php
 /*
 * Shrink CakePHP Plugin to compile, combine, compress css and js.
-* Copyright 2013 Trent Richardson < http://trentrichardson.com >
+* Copyright 2015 Trent Richardson < http://trentrichardson.com >
 * You may use this project under MIT or GPL licenses.
 * http://trentrichardson.com/Impromptu/GPL-LICENSE.txt
 * http://trentrichardson.com/Impromptu/MIT-LICENSE.txt

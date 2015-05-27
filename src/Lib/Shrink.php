@@ -12,8 +12,8 @@ use Shrink\Lib\ShrinkType;
 class Shrink{
 
 	/**
-    * @var array settings - overall settings
-    */
+	* @var array settings - overall settings
+	*/
 	public $settings = [
 		'js'=>[
 				'path'=>'js/',        // folder to find src js files
@@ -53,10 +53,10 @@ class Shrink{
 
 
 	/**
-    * Constructer - merges settings with options
-    * @param array $options - options to set for compilers and compressors
-    * @return void
-    */
+	* Constructer - merges settings with options
+	* @param array $options - options to set for compilers and compressors
+	* @return void
+	*/
 	function __construct($options=[]) {
 		$this->settings = array_replace_recursive($this->settings, (array) Configure::read('Shrink'), $options);
 
@@ -83,12 +83,12 @@ class Shrink{
 
 
 	/**
-    * build - Compile, Compress, Combile the array of files
-    * @param array $files - filenames to process
-    * @param string $type - js or css to indicate how to compress and which options to use
-    * @param string $cacheFile - filename to write the results to, relative to cachePath option
-    * @return array - array with the cache file object and the new web path ['file','webPath']
-    */
+	* build - Compile, Compress, Combile the array of files
+	* @param array $files - filenames to process
+	* @param string $type - js or css to indicate how to compress and which options to use
+	* @param string $cacheFile - filename to write the results to, relative to cachePath option
+	* @return array - array with the cache file object and the new web path ['file','webPath']
+	*/
 	function build($files, $type, $cacheFile='') {
 
 		// determine the cache file path
