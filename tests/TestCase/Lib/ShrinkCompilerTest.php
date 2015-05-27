@@ -277,7 +277,7 @@ class ShrinkCompilerTest extends TestCase
 			$this->assertEquals($result, $expect, 'Compiled Typescript does not match. Ensure Typescript script command line utility is available. npm install -g typescript');
 		}
 		else{
-			echo "\nSkipping Typescript tests, no coffee available: npm install -g typescript\n";
+			echo "\nSkipping Typescript tests, no typescript available: npm install -g typescript\n";
 		}
 	}
 }
