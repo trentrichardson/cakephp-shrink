@@ -18,7 +18,7 @@ class Shrink{
 		'js'=>[
 				'path'=>'js/',        // folder to find src js files
 				'cachePath'=>'js/',   // folder to create cache files
-				'minifier'=>'jshrink'   // minifier to minify, false to leave as is
+				'minifier'=>'jshrink' // minifier to minify, false to leave as is
 			],
 		'css'=>[
 				'path'=>'css/',       // folder to find src css files
@@ -26,9 +26,9 @@ class Shrink{
 				'minifier'=>'cssmin', // minifier name to minify, false to leave as is
 				'charset'=>'utf-8'    // charset to use
 			],
-		'url'=>'',                     // url without ending /, incase you access from another domain
-		'prefix'=>'shrink_',           // prefix the beginning of cache files
-		'debugLevel'=>1                // compared against Core.debug, eq will recompile, > will not minify
+		'url'=>'',                    // url without ending /, incase you access from another domain
+		'prefix'=>'shrink_',          // prefix the beginning of cache files
+		'debugLevel'=>1               // compared against Core.debug, eq will recompile, > will not minify
 	];
 
 	/**
@@ -57,10 +57,10 @@ class Shrink{
     * @param array $options - options to set for compilers and compressors
     * @return void
     */
-    function __construct($options=[]) {
-        $this->settings = array_replace_recursive($this->settings, (array) Configure::read('Shrink'), $options);
+	function __construct($options=[]) {
+		$this->settings = array_replace_recursive($this->settings, (array) Configure::read('Shrink'), $options);
 
-        // URL Rewrites are switched off, so wee need to add this extra path.
+		// URL Rewrites are switched off, so wee need to add this extra path.
 		if(Configure::read('App.baseUrl')){
 			$this->extraPath = 'app/webroot/';
 		}
@@ -79,18 +79,18 @@ class Shrink{
 			$this->settings['js']['minifier'] = 'none';
 		if($this->settings['css']['minifier'] === false)
 			$this->settings['css']['minifier'] = 'none';
-    }
+	}
 
 
-    /**
+	/**
     * build - Compile, Compress, Combile the array of files
     * @param array $files - filenames to process
     * @param string $type - js or css to indicate how to compress and which options to use
     * @param string $cacheFile - filename to write the results to, relative to cachePath option
     * @return array - array with the cache file object and the new web path ['file','webPath']
     */
-    function build($files, $type, $cacheFile='') {
-        
+	function build($files, $type, $cacheFile='') {
+
 		// determine the cache file path
 		if($cacheFile === ''){
 			$cacheFile = $this->settings['prefix'] . md5(implode('_', $files)) .'.'. $type;
@@ -163,5 +163,5 @@ class Shrink{
 			'file'=>$cacheFileObj,
 			'webPath'=>$webCacheFilePath
 		];
-    }
+	}
 }
