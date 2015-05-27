@@ -35,7 +35,7 @@ class ShrinkHelperTest extends TestCase
 
 
 	/**
-	* test that options are properly set
+	* test that css files are properly queued and processed
 	*
 	* @return void
 	*/
@@ -68,12 +68,12 @@ class ShrinkHelperTest extends TestCase
 		$expect = $expectedfile->read();
 		unset($expectedfile);
 
-		$this->assertEquals($result, $expect);
+		$this->assertEquals($expect, $result);
 	}
 
 
 	/**
-	* test that options are properly set
+	* test that js files are properly queued and processed
 	*
 	* @return void
 	*/
@@ -105,7 +105,7 @@ class ShrinkHelperTest extends TestCase
 		$expect = $expectedfile->read();
 		unset($expectedfile);
 
-		$this->assertEquals($result, $expect);
+		$this->assertEquals($expect, $result);
 	}
 	
 }

@@ -47,7 +47,7 @@ class ShrinkCompilerTest extends TestCase
 		$expect = $file->read();
 		unset($file);
 
-		$this->assertEquals($result, $expect);
+		$this->assertEquals($expect, $result);
 	}
 
 
@@ -68,7 +68,7 @@ class ShrinkCompilerTest extends TestCase
 		$expect = $file->read();
 		unset($file);
 
-		$this->assertEquals($result, $expect);
+		$this->assertEquals($expect, $result);
 	}
 
 
@@ -94,7 +94,7 @@ class ShrinkCompilerTest extends TestCase
 			$expect = $cssfile->read();
 			unset($cssfile);
 
-			$this->assertEquals($result, $expect, 'Compiled less does not match. Ensure lessphp package is available via composer.');
+			$this->assertEquals($expect, $result, 'Compiled less does not match. Ensure lessphp package is available via composer.');
 		}
 		else{
 			echo "\nSkipping less tests, no lessphp available via composer.\n";
@@ -124,7 +124,7 @@ class ShrinkCompilerTest extends TestCase
 			$expect = $cssfile->read();
 			unset($cssfile);
 
-			$this->assertEquals($result, $expect, 'Compiled less does not match. Ensure lessc command line utility is available. npm install -g less');
+			$this->assertEquals($expect, $result, 'Compiled less does not match. Ensure lessc command line utility is available. npm install -g less');
 		}
 		else{
 			echo "\nSkipping less tests, no lessc available via composer.\n";
@@ -154,7 +154,7 @@ class ShrinkCompilerTest extends TestCase
 			$expect = $cssfile->read();
 			unset($cssfile);
 
-			$this->assertEquals($result, $expect, 'Compiled scss does not match. Ensure sassphp package is available via composer.');
+			$this->assertEquals($expect, $result, 'Compiled scss does not match. Ensure sassphp package is available via composer.');
 		}
 		else{
 			echo "\nSkipping Scss tests, no sassphp available via composer.\n";
@@ -184,7 +184,7 @@ class ShrinkCompilerTest extends TestCase
 			$expect = $cssfile->read();
 			unset($cssfile);
 
-			$this->assertEquals($result, $expect, 'Compiled scss does not match. Ensure Sass command line utility is available. gem install sass');
+			$this->assertEquals($expect, $result, 'Compiled scss does not match. Ensure Sass command line utility is available. gem install sass');
 		}
 		else{
 			echo "\nSkipping Scss tests, no scss available: gem install sass\n";
@@ -214,7 +214,7 @@ class ShrinkCompilerTest extends TestCase
 			$expect = $cssfile->read();
 			unset($cssfile);
 
-			$this->assertEquals($result, $expect, 'Compiled sass does not match. Ensure Sass command line utility is available. gem install sass');
+			$this->assertEquals($expect, $result, 'Compiled sass does not match. Ensure Sass command line utility is available. gem install sass');
 		}
 		else{
 			echo "\nSkipping Sass tests, no sass available: gem install sass\n";
@@ -244,7 +244,7 @@ class ShrinkCompilerTest extends TestCase
 			$expect = $jsfile->read();
 			unset($jsfile);
 
-			$this->assertEquals($result, $expect, 'Compiled coffee does not match. Ensure Coffee script command line utility is available. npm install -g coffee-script');
+			$this->assertEquals($expect, $result, 'Compiled coffee does not match. Ensure Coffee script command line utility is available. npm install -g coffee-script');
 		}
 		else{
 			echo "\nSkipping Coffee Script tests, no coffee available: npm install -g coffee-script\n";
@@ -274,7 +274,7 @@ class ShrinkCompilerTest extends TestCase
 			$expect = $jsfile->read();
 			unset($jsfile);
 
-			$this->assertEquals($result, $expect, 'Compiled Typescript does not match. Ensure Typescript script command line utility is available. npm install -g typescript');
+			$this->assertEquals($expect, $result, 'Compiled Typescript does not match. Ensure Typescript script command line utility is available. npm install -g typescript');
 		}
 		else{
 			echo "\nSkipping Typescript tests, no typescript available: npm install -g typescript\n";

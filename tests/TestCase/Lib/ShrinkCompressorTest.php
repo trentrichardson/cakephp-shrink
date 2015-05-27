@@ -47,7 +47,7 @@ class ShrinkCompressorTest extends TestCase
 		unset($file);
 		$result = $comp->compress($code);
 		$expect = $code;
-		$this->assertEquals($result, $expect);
+		$this->assertEquals($expect, $result);
 
 		// run against js
 		$file = new File(WWW_ROOT .'js/base.js');
@@ -55,7 +55,7 @@ class ShrinkCompressorTest extends TestCase
 		unset($file);
 		$result = $comp->compress($code);
 		$expect = $code;
-		$this->assertEquals($result, $expect);
+		$this->assertEquals($expect, $result);
 	}
 
 
@@ -81,7 +81,7 @@ class ShrinkCompressorTest extends TestCase
 			$minfile = new File(WWW_ROOT .'css/base.cssmin.css');
 			$expect = $minfile->read();
 			unset($minfile);
-			$this->assertEquals($result, $expect, 'Compressed css does not match. Ensure CssMin package is available via composer.');
+			$this->assertEquals($expect, $result, 'Compressed css does not match. Ensure CssMin package is available via composer.');
 		}
 		else{
 			echo "\nSkipping cssmin tests, no CssMin available via composer.\n";
@@ -112,7 +112,7 @@ class ShrinkCompressorTest extends TestCase
 			$expect = $minfile->read();
 			unset($minfile);
 
-			$this->assertEquals($result, $expect, 'Compressed js does not match. Ensure jshrink package is available via composer.');
+			$this->assertEquals($expect, $result, 'Compressed js does not match. Ensure jshrink package is available via composer.');
 		}
 		else{
 			echo "\nSkipping Jshrink tests, no Jshrink available via composer.\n";
