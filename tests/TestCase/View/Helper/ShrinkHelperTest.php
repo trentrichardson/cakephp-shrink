@@ -62,11 +62,11 @@ class ShrinkHelperTest extends TestCase
 		// verify the contents
 		$result = $file->read();
 		$file->delete();
-		unset($file);
+		$file->close();
 
 		$expectedfile = new File(WWW_ROOT .'css/base.shrink.css');
 		$expect = $expectedfile->read();
-		unset($expectedfile);
+		$expectedfile->close();
 
 		$this->assertEquals($expect, $result);
 	}
@@ -99,11 +99,11 @@ class ShrinkHelperTest extends TestCase
 		// verify the contents
 		$result = $file->read();
 		$file->delete();
-		unset($file);
+		$file->close();
 
 		$expectedfile = new File(WWW_ROOT .'js/base.shrink.js');
 		$expect = $expectedfile->read();
-		unset($expectedfile);
+		$expectedfile->close();
 
 		$this->assertEquals($expect, $result);
 	}

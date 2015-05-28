@@ -147,6 +147,8 @@ class Shrink{
 					$output .= $code ."\n";
 				}
 
+				// we are done with this file, close it
+				$v['file']->close();
 			}
 
 			// be sure no duplicate charsets
@@ -159,9 +161,12 @@ class Shrink{
 			$cacheFileObj->write($output);
 		}
 
-		return [
-			'file'=>$cacheFileObj,
+		$ret = [
+			'path'=>$cacheFileObj->path,
 			'webPath'=>$webCacheFilePath
 		];
+		$cacheFileObj->close();
+
+		return $ret;
 	}
 }

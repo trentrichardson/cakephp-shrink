@@ -45,7 +45,7 @@ class ShrinkCompilerTest extends TestCase
 		$file = new File(WWW_ROOT .'css/base.css');
 		$result = $compiler->compile($file);
 		$expect = $file->read();
-		unset($file);
+		$file->close();
 
 		$this->assertEquals($expect, $result);
 	}
@@ -66,7 +66,7 @@ class ShrinkCompilerTest extends TestCase
 		$file = new File(WWW_ROOT .'js/base.js');
 		$result = $compiler->compile($file);
 		$expect = $file->read();
-		unset($file);
+		$file->close();
 
 		$this->assertEquals($expect, $result);
 	}
@@ -87,12 +87,12 @@ class ShrinkCompilerTest extends TestCase
 			// get the result
 			$file = new File(WWW_ROOT .'css/base.less');
 			$result = $compiler->compile($file);
-			unset($file);
+			$file->close();
 
 			// get the expected result
 			$cssfile = new File(WWW_ROOT .'css/base.less.css');
 			$expect = $cssfile->read();
-			unset($cssfile);
+			$cssfile->close();
 
 			$this->assertEquals($expect, $result, 'Compiled less does not match. Ensure lessphp package is available via composer.');
 		}
@@ -117,12 +117,12 @@ class ShrinkCompilerTest extends TestCase
 			// get the result
 			$file = new File(WWW_ROOT .'css/base.less');
 			$result = $compiler->compile($file);
-			unset($file);
+			$file->close();
 
 			// get the expected result
 			$cssfile = new File(WWW_ROOT .'css/base.lesscmd.css');
 			$expect = $cssfile->read();
-			unset($cssfile);
+			$cssfile->close();
 
 			$this->assertEquals($expect, $result, 'Compiled less does not match. Ensure lessc command line utility is available. npm install -g less');
 		}
@@ -147,12 +147,12 @@ class ShrinkCompilerTest extends TestCase
 			// get the result
 			$file = new File(WWW_ROOT .'css/base.scss');
 			$result = $compiler->compile($file);
-			unset($file);
+			$file->close();
 
 			// get the expected result
 			$cssfile = new File(WWW_ROOT .'css/base.scss.css');
 			$expect = $cssfile->read();
-			unset($cssfile);
+			$cssfile->close();
 
 			$this->assertEquals($expect, $result, 'Compiled scss does not match. Ensure sassphp package is available via composer.');
 		}
@@ -177,12 +177,12 @@ class ShrinkCompilerTest extends TestCase
 			// get the result
 			$file = new File(WWW_ROOT .'css/base.scss');
 			$result = $compiler->compile($file);
-			unset($file);
+			$file->close();
 
 			// get the expected result
 			$cssfile = new File(WWW_ROOT .'css/base.scsscmd.css');
 			$expect = $cssfile->read();
-			unset($cssfile);
+			$cssfile->close();
 
 			$this->assertEquals($expect, $result, 'Compiled scss does not match. Ensure Sass command line utility is available. gem install sass');
 		}
@@ -207,12 +207,12 @@ class ShrinkCompilerTest extends TestCase
 			// get the result
 			$file = new File(WWW_ROOT .'css/base.sass');
 			$result = $compiler->compile($file);
-			unset($file);
+			$file->close();
 
 			// get the expected result
 			$cssfile = new File(WWW_ROOT .'css/base.sass.css');
 			$expect = $cssfile->read();
-			unset($cssfile);
+			$cssfile->close();
 
 			$this->assertEquals($expect, $result, 'Compiled sass does not match. Ensure Sass command line utility is available. gem install sass');
 		}
@@ -237,12 +237,12 @@ class ShrinkCompilerTest extends TestCase
 			// get the result
 			$file = new File(WWW_ROOT .'js/base.coffee');
 			$result = $compiler->compile($file);
-			unset($file);
+			$file->close();
 
 			// get the expected result
 			$jsfile = new File(WWW_ROOT .'js/base.coffee.js');
 			$expect = $jsfile->read();
-			unset($jsfile);
+			$jsfile->close();
 
 			$this->assertEquals($expect, $result, 'Compiled coffee does not match. Ensure Coffee script command line utility is available. npm install -g coffee-script');
 		}
@@ -267,12 +267,12 @@ class ShrinkCompilerTest extends TestCase
 			// get the result
 			$file = new File(WWW_ROOT .'js/base.ts');
 			$result = $compiler->compile($file);
-			unset($file);
+			$file->close();
 
 			// get the expected result
 			$jsfile = new File(WWW_ROOT .'js/base.ts.js');
 			$expect = $jsfile->read();
-			unset($jsfile);
+			$jsfile->close();
 
 			$this->assertEquals($expect, $result, 'Compiled Typescript does not match. Ensure Typescript script command line utility is available. npm install -g typescript');
 		}

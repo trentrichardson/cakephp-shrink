@@ -129,7 +129,10 @@ class ShrinkHelper extends Helper{
 
 		// print them how the user wants
 		if($how == 'embed'){
-			$output = $cacheFile['file']->read();
+			$cacheFileObj = new File($cacheFile['path']);
+			$output = $cacheFileObj->read();
+			$cacheFileObj->close();
+
 			if($type == 'css'){
 				return '<style type="text/css">'. $output .'</style>';
 			}

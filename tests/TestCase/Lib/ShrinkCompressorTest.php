@@ -44,7 +44,7 @@ class ShrinkCompressorTest extends TestCase
 		// run against css
 		$file = new File(WWW_ROOT .'css/base.css');
 		$code = $file->read();
-		unset($file);
+		$file->close();
 		$result = $comp->compress($code);
 		$expect = $code;
 		$this->assertEquals($expect, $result);
@@ -52,7 +52,7 @@ class ShrinkCompressorTest extends TestCase
 		// run against js
 		$file = new File(WWW_ROOT .'js/base.js');
 		$code = $file->read();
-		unset($file);
+		$file->close();
 		$result = $comp->compress($code);
 		$expect = $code;
 		$this->assertEquals($expect, $result);
@@ -75,12 +75,12 @@ class ShrinkCompressorTest extends TestCase
 			$file = new File(WWW_ROOT .'css/base.css');
 			$code = $file->read();
 			$result = $comp->compress($code);
-			unset($file);
+			$file->close();
 
 			// expected result
 			$minfile = new File(WWW_ROOT .'css/base.cssmin.css');
 			$expect = $minfile->read();
-			unset($minfile);
+			$minfile->close();
 			$this->assertEquals($expect, $result, 'Compressed css does not match. Ensure CssMin package is available via composer.');
 		}
 		else{
@@ -105,12 +105,12 @@ class ShrinkCompressorTest extends TestCase
 			$file = new File(WWW_ROOT .'js/base.js');
 			$code = $file->read();
 			$result = $comp->compress($code);
-			unset($file);
+			$file->close();
 
 			// expected result
 			$minfile = new File(WWW_ROOT .'js/base.jshrink.js');
 			$expect = $minfile->read();
-			unset($minfile);
+			$minfile->close();
 
 			$this->assertEquals($expect, $result, 'Compressed js does not match. Ensure jshrink package is available via composer.');
 		}

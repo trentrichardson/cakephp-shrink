@@ -38,30 +38,28 @@ class ShrinkTest extends TestCase
 	* @return void
 	*/
 	public function testShrinkCss(){
-		$cacheFile = $this->Shrink->build([
+		$ret = $this->Shrink->build([
 				'base.css',
 				'base.less',
 				'base.scss'
 			], 'css');
 
 		// verify the result has the proper keys
-		$this->assertArrayHasKey('file', $cacheFile);
-		$this->assertArrayHasKey('webPath', $cacheFile);
+		$this->assertArrayHasKey('path', $ret);
+		$this->assertArrayHasKey('webPath', $ret);
 
 		// verify we were returned a file
-		$this->assertInstanceOf('\Cake\Filesystem\File', $cacheFile['file']);
-
-		// verify the file exists
-		$this->assertTrue($cacheFile['file']->exists());
+		$this->assertFileExists($ret['path']);
 
 		// verify the contents
-		$result = $cacheFile['file']->read();
-		$cacheFile['file']->delete();
-		unset($cacheFile['file']);
+		$cacheFile = new File($ret['path']);
+		$result = $cacheFile->read();
+		$cacheFile->delete();
+		$cacheFile->close();
 
 		$expectedfile = new File(WWW_ROOT .'css/base.shrink.css');
 		$expect = $expectedfile->read();
-		unset($expectedfile);
+		$expectedfile->close();
 
 		$this->assertEquals($expect, $result);
 	}
@@ -73,29 +71,27 @@ class ShrinkTest extends TestCase
 	* @return void
 	*/
 	public function testShrinkJs(){
-		$cacheFile = $this->Shrink->build([
+		$ret = $this->Shrink->build([
 				'base.js',
 				'base.coffee'
 			], 'js');
 
 		// verify the result has the proper keys
-		$this->assertArrayHasKey('file', $cacheFile);
-		$this->assertArrayHasKey('webPath', $cacheFile);
+		$this->assertArrayHasKey('path', $ret);
+		$this->assertArrayHasKey('webPath', $ret);
 
 		// verify we were returned a file
-		$this->assertInstanceOf('\Cake\Filesystem\File', $cacheFile['file']);
-
-		// verify the file exists
-		$this->assertTrue($cacheFile['file']->exists());
+		$this->assertFileExists($ret['path']);
 
 		// verify the contents
-		$result = $cacheFile['file']->read();
-		$cacheFile['file']->delete();
-		unset($cacheFile['file']);
+		$cacheFile = new File($ret['path']);
+		$result = $cacheFile->read();
+		$cacheFile->delete();
+		$cacheFile->close();
 
 		$expectedfile = new File(WWW_ROOT .'js/base.shrink.js');
 		$expect = $expectedfile->read();
-		unset($expectedfile);
+		$expectedfile->close();
 
 		$this->assertEquals($expect, $result);
 	}
