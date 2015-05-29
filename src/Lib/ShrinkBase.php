@@ -10,7 +10,7 @@ class ShrinkBase{
 
     
     /**
-    * Constructer - merges settings with options
+    * Constructor - merges settings with options
     * @param array $options - options to set for compilers and compressors
     * @return void
     */

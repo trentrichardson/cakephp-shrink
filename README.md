@@ -8,7 +8,8 @@ About
 - Twitter: [@practicalweb](http://twitter.com/practicalweb)
 
 The Shrink plugin compiles, combines, and minifies javascript and css.  It currently has
-support for native javascript and css, Less (php version), Sass, and CoffeeScript.
+support for native javascript and css, Less (php and node versions), Sass (php and ruby 
+versions), CoffeeScript, and TypeScript.
 
 Shrink is a minimal configuration plugin.  For a super powerful, configurable asset minifier
 look into [Mark Story's asset_compress](https://github.com/markstory/asset_compress) instead.
@@ -151,8 +152,8 @@ utility class which currently provides a "cmd" method to execute commands.
 Testing
 -------
 
-If you are making changes it is a good idea to create tests for your changes and ensure 
-they are in a passing state.  Tests are run via phpunit.  Since cakephp-shrink provides 
+If you are making changes it is a good idea to create tests and ensure your new code
+is in a passing state.  Tests are run via phpunit.  Since cakephp-shrink provides 
 support for command line utilities and composer packages you must install them before 
 tests can run.
 
@@ -166,6 +167,8 @@ gem install sass
 
 Depending on your setup you may need to use sudo.  To run tests simply call `phpunit` 
 or `vendor/bin/phpunit`.
+
+[![Build Status](https://travis-ci.org/trentrichardson/cakephp-shrink.svg?branch=master)](https://travis-ci.org/trentrichardson/cakephp-shrink)
 
 License
 -------
