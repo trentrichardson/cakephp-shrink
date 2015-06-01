@@ -106,7 +106,14 @@ $helpers = array('Form','Html',
 );
 ```
 
-The available options to pass are currently:
+You may also pass in options using Configure, however any options directly passed 
+to the helper as shown above will override those set with Configure:
+
+```php
+Configure::write('Shrink.url', 'http://assets.trentrichardson.com');
+```
+
+The available options to pass are:
 
 ```php
 public $settings = array(
