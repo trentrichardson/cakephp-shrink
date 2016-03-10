@@ -66,6 +66,39 @@ class ShrinkTest extends TestCase
 
 
 	/**
+	* Test that css type files are processed from a plugin
+	*
+	* @return void
+	*/
+	public function testShrinkCssFromPlugin(){
+		$ret = $this->Shrink->build([
+				'Sample.base.css',
+				'base.less',
+				'base.scss'
+			], 'css');
+
+		// verify the result has the proper keys
+		$this->assertArrayHasKey('path', $ret);
+		$this->assertArrayHasKey('webPath', $ret);
+
+		// verify we were returned a file
+		$this->assertFileExists($ret['path']);
+
+		// verify the contents
+		$cacheFile = new File($ret['path']);
+		$result = $cacheFile->read();
+		$cacheFile->delete();
+		$cacheFile->close();
+
+		$expectedfile = new File(WWW_ROOT .'css/base.plugin.css');
+		$expect = $expectedfile->read();
+		$expectedfile->close();
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+	/**
 	* Test that js files are properly processed
 	*
 	* @return void
@@ -95,5 +128,37 @@ class ShrinkTest extends TestCase
 
 		$this->assertEquals($expect, $result);
 	}
-	
+
+
+	/**
+	* Test that js files are properly processed from a plugin
+	*
+	* @return void
+	*/
+	public function testShrinkJsFromPlugin(){
+		$ret = $this->Shrink->build([
+				'Sample.base.js',
+				'base.coffee'
+			], 'js');
+
+		// verify the result has the proper keys
+		$this->assertArrayHasKey('path', $ret);
+		$this->assertArrayHasKey('webPath', $ret);
+
+		// verify we were returned a file
+		$this->assertFileExists($ret['path']);
+
+		// verify the contents
+		$cacheFile = new File($ret['path']);
+		$result = $cacheFile->read();
+		$cacheFile->delete();
+		$cacheFile->close();
+
+		$expectedfile = new File(WWW_ROOT .'js/base.plugin.js');
+		$expect = $expectedfile->read();
+		$expectedfile->close();
+
+		$this->assertEquals($expect, $result);
+	}
+
 }

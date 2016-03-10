@@ -102,7 +102,21 @@ class Shrink{
 		// create Cake file objects and get the max date
 		$maxAge = 0;
 		foreach($files as $k=>$v){
-			$tmpf = new File(preg_replace('/(\/+|\\+)/', DS, WWW_ROOT .DS. ($v[0]=='/'? '':$this->settings[$type]['path']) .DS. $v));
+			$dotpos = strpos($v, '.');
+			$plugin = substr($v, 0, $dotpos);// plugin name would be before the first "."
+
+			// build two paths, one as if a plugin, other as if a regular asset file
+			$plugin_rel_path = substr($v, $dotpos+1); // path would be after "."
+			$plugin_rel_path = ($plugin_rel_path[0]=='/'? '':$this->settings[$type]['path']) .DS. $plugin_rel_path;
+			$plugin_path = preg_replace('/(\/+|\\+)/', DS, APP . DS . 'plugins' . DS . $plugin . DS . 'webroot' .DS. $plugin_rel_path);
+
+			$std_rel_path = ($v[0]=='/'? '':$this->settings[$type]['path']) .DS. $v;
+			$std_path = realpath(preg_replace('/(\/+|\\+)/', DS, WWW_ROOT .DS. $std_rel_path));
+
+			// check if plugin file exists, if not it must be in webroot
+			$tmpf_path = file_exists($plugin_path) ? $plugin_path : $std_path;
+
+			$tmpf = new File($tmpf_path);
 			$files[$k] = [
 					'file'=>$tmpf,
 					'rel_path'=>$v
