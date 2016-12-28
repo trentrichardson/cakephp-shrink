@@ -66,10 +66,9 @@ class Shrink{
 		}
 
 		// Determine the debug level to see if we should minify
-		$cakedebug = Configure::read('debug');
-		if($cakedebug >= $this->settings['debugLevel']){
+		if($this->settings['debugLevel']){
 			$this->debugging = true;
-			if($cakedebug == 2){
+			if($this->settings['debugLevel'] == 2){
 				$this->settings['js']['minifier'] = false;
 				$this->settings['minify']['minifier'] = false;
 			}
