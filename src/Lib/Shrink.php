@@ -138,7 +138,7 @@ class Shrink{
 			$output = '';
 
 			foreach($files as $k=>$v){
-				$lang = $v['file']->ext();
+				$lang = substr($v['file']->name, strrpos($v['file']->name, '.') + 1);
 
 				// load compiler if it is not already
 				if(!isset($this->compilers[$lang])){
