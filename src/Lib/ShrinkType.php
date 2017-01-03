@@ -18,7 +18,12 @@ class ShrinkType{
 
         $class = __NAMESPACE__ . '\\ShrinkCompiler\\' .
             'ShrinkCompiler'. strtoupper(substr($type,0,1)).strtolower(substr($type,1));
-        return new $class($settings);
+
+		if(!class_exists($class)){
+			throw new \Exception('Compiler for type "'. $type .'" does not exist. Verify the file exists and the file extension matches a compiler.');
+		}
+
+		return new $class($settings);
 	}
 
 	/**
@@ -31,6 +36,11 @@ class ShrinkType{
 
         $class = __NAMESPACE__ . '\\ShrinkCompressor\\' .
             'ShrinkCompressor'. strtoupper(substr($type,0,1)).strtolower(substr($type,1));
+
+		if(!class_exists($class)){
+			throw new \Exception('Compressor for type "'. $type .'" does not exist');
+		}
+
         return new $class($settings);
 	}
 }
