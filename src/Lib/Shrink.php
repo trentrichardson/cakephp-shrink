@@ -70,7 +70,7 @@ class Shrink{
 			$this->debugging = true;
 			if($this->settings['debugLevel'] == 2){
 				$this->settings['js']['minifier'] = false;
-				$this->settings['minify']['minifier'] = false;
+				$this->settings['css']['minifier'] = false;
 			}
 		}
 
