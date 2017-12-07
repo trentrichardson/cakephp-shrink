@@ -107,7 +107,7 @@ class Shrink{
 			// build two paths, one as if a plugin, other as if a regular asset file
 			$plugin_rel_path = substr($v, $dotpos+1); // path would be after "."
 			$plugin_rel_path = ($plugin_rel_path[0]=='/'? '':$this->settings[$type]['path']) .DS. $plugin_rel_path;
-			$plugin_path = preg_replace('/(\/+|\\+)/', DS, APP . DS . 'plugins' . DS . $plugin . DS . 'webroot' .DS. $plugin_rel_path);
+			$plugin_path = preg_replace('/(\/+|\\+)/', DS, ROOT . DS . 'plugins' . DS . $plugin . DS . 'webroot' .DS. $plugin_rel_path);
 
 			$std_rel_path = ($v[0]=='/'? '':$this->settings[$type]['path']) .DS. $v;
 			$std_path = realpath(preg_replace('/(\/+|\\+)/', DS, WWW_ROOT .DS. $std_rel_path));
