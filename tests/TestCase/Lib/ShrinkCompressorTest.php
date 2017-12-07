@@ -37,7 +37,7 @@ class ShrinkCompressorTest extends TestCase
 	*/
 	public function testCompressorNone(){
 		$comp = ShrinkType::getCompressor('none', []);
-		
+
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompressor\ShrinkCompressorInterface', $comp);
 
@@ -47,7 +47,7 @@ class ShrinkCompressorTest extends TestCase
 		$file->close();
 		$result = $comp->compress($code);
 		$expect = $code;
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($result, $expect);
 
 		// run against js
 		$file = new File(WWW_ROOT .'js/base.js');
@@ -55,7 +55,7 @@ class ShrinkCompressorTest extends TestCase
 		$file->close();
 		$result = $comp->compress($code);
 		$expect = $code;
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($result, $expect);
 	}
 
 
@@ -66,7 +66,7 @@ class ShrinkCompressorTest extends TestCase
 	*/
 	public function testCompressorCssmin(){
 		$comp = ShrinkType::getCompressor('cssmin', []);
-		
+
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompressor\ShrinkCompressorInterface', $comp);
 
@@ -81,7 +81,7 @@ class ShrinkCompressorTest extends TestCase
 			$minfile = new File(WWW_ROOT .'css/base.cssmin.css');
 			$expect = $minfile->read();
 			$minfile->close();
-			$this->assertEquals($expect, $result, 'Compressed css does not match. Ensure CssMin package is available via composer.');
+			$this->assertEquals($result, $expect, 'Compressed css does not match. Ensure CssMin package is available via composer.');
 		}
 		else{
 			echo "\nSkipping cssmin tests, no CssMin available via composer.\n";
@@ -96,7 +96,7 @@ class ShrinkCompressorTest extends TestCase
 	*/
 	public function testCompressorJshrink(){
 		$comp = ShrinkType::getCompressor('jshrink', []);
-		
+
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompressor\ShrinkCompressorInterface', $comp);
 
@@ -112,7 +112,7 @@ class ShrinkCompressorTest extends TestCase
 			$expect = $minfile->read();
 			$minfile->close();
 
-			$this->assertEquals($expect, $result, 'Compressed js does not match. Ensure jshrink package is available via composer.');
+			$this->assertEquals($result, $expect, 'Compressed js does not match. Ensure jshrink package is available via composer.');
 		}
 		else{
 			echo "\nSkipping Jshrink tests, no Jshrink available via composer.\n";

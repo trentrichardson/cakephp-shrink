@@ -37,7 +37,7 @@ class ShrinkCompilerTest extends TestCase
 	*/
 	public function testCompilerCss(){
 		$compiler = ShrinkType::getCompiler('css', []);
-		
+
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
 
@@ -47,7 +47,7 @@ class ShrinkCompilerTest extends TestCase
 		$expect = $file->read();
 		$file->close();
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($result, $expect);
 	}
 
 
@@ -58,7 +58,7 @@ class ShrinkCompilerTest extends TestCase
 	*/
 	public function testCompilerJs(){
 		$compiler = ShrinkType::getCompiler('js', []);
-		
+
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
 
@@ -68,7 +68,7 @@ class ShrinkCompilerTest extends TestCase
 		$expect = $file->read();
 		$file->close();
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($result, $expect);
 	}
 
 
@@ -79,7 +79,7 @@ class ShrinkCompilerTest extends TestCase
 	*/
 	public function testCompilerLess(){
 		$compiler = ShrinkType::getCompiler('less', []);
-		
+
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
 
@@ -94,7 +94,7 @@ class ShrinkCompilerTest extends TestCase
 			$expect = $cssfile->read();
 			$cssfile->close();
 
-			$this->assertEquals($expect, $result, 'Compiled less does not match. Ensure lessphp package is available via composer.');
+			$this->assertEquals($result, $expect, 'Compiled less does not match. Ensure lessphp package is available via composer.');
 		}
 		else{
 			echo "\nSkipping less tests, no lessphp available via composer.\n";
@@ -109,7 +109,7 @@ class ShrinkCompilerTest extends TestCase
 	*/
 	public function testCompilerLessCmd(){
 		$compiler = ShrinkType::getCompiler('less', ['less'=>['less'=>'lessc']]);
-		
+
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
 
@@ -124,7 +124,7 @@ class ShrinkCompilerTest extends TestCase
 			$expect = $cssfile->read();
 			$cssfile->close();
 
-			$this->assertEquals($expect, $result, 'Compiled less does not match. Ensure lessc command line utility is available. npm install -g less');
+			$this->assertEquals($result, $expect, 'Compiled less does not match. Ensure lessc command line utility is available. npm install -g less');
 		}
 		else{
 			echo "\nSkipping less tests, no lessc available via composer.\n";
@@ -139,7 +139,7 @@ class ShrinkCompilerTest extends TestCase
 	*/
 	public function testCompilerScss(){
 		$compiler = ShrinkType::getCompiler('scss', []);
-		
+
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
 
@@ -154,7 +154,7 @@ class ShrinkCompilerTest extends TestCase
 			$expect = $cssfile->read();
 			$cssfile->close();
 
-			$this->assertEquals($expect, $result, 'Compiled scss does not match. Ensure sassphp package is available via composer.');
+			$this->assertEquals($result, $expect, 'Compiled scss does not match. Ensure sassphp package is available via composer.');
 		}
 		else{
 			echo "\nSkipping Scss tests, no sassphp available via composer.\n";
@@ -169,7 +169,7 @@ class ShrinkCompilerTest extends TestCase
 	*/
 	public function testCompilerScssCmd(){
 		$compiler = ShrinkType::getCompiler('scss', ['sass'=>['sass'=>'sass']]);
-		
+
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
 
@@ -183,8 +183,8 @@ class ShrinkCompilerTest extends TestCase
 			$cssfile = new File(WWW_ROOT .'css/base.scsscmd.css');
 			$expect = $cssfile->read();
 			$cssfile->close();
-
-			$this->assertEquals($expect, $result, 'Compiled scss does not match. Ensure Sass command line utility is available. gem install sass');
+			
+			$this->assertEquals($result, $expect, 'Compiled scss does not match. Ensure Sass command line utility is available. gem install sass');
 		}
 		else{
 			echo "\nSkipping Scss tests, no scss available: gem install sass\n";
@@ -199,7 +199,7 @@ class ShrinkCompilerTest extends TestCase
 	*/
 	public function testCompilerSass(){
 		$compiler = ShrinkType::getCompiler('sass', []);
-		
+
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
 
@@ -214,7 +214,7 @@ class ShrinkCompilerTest extends TestCase
 			$expect = $cssfile->read();
 			$cssfile->close();
 
-			$this->assertEquals($expect, $result, 'Compiled sass does not match. Ensure Sass command line utility is available. gem install sass');
+			$this->assertEquals($result, $expect, 'Compiled sass does not match. Ensure Sass command line utility is available. gem install sass');
 		}
 		else{
 			echo "\nSkipping Sass tests, no sass available: gem install sass\n";
@@ -229,7 +229,7 @@ class ShrinkCompilerTest extends TestCase
 	*/
 	public function testCompilerCoffee(){
 		$compiler = ShrinkType::getCompiler('coffee', []);
-		
+
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
 
@@ -244,7 +244,7 @@ class ShrinkCompilerTest extends TestCase
 			$expect = $jsfile->read();
 			$jsfile->close();
 
-			$this->assertEquals($expect, $result, 'Compiled coffee does not match. Ensure Coffee script command line utility is available. npm install -g coffee-script');
+			$this->assertEquals($result, $expect, 'Compiled coffee does not match. Ensure Coffee script command line utility is available. npm install -g coffee-script');
 		}
 		else{
 			echo "\nSkipping Coffee Script tests, no coffee available: npm install -g coffee-script\n";
@@ -259,7 +259,7 @@ class ShrinkCompilerTest extends TestCase
 	*/
 	public function testCompilerTypescript(){
 		$compiler = ShrinkType::getCompiler('ts', []);
-		
+
 		// verify the instance
 		$this->assertInstanceOf('\Shrink\Lib\ShrinkCompiler\ShrinkCompilerInterface', $compiler);
 
@@ -274,7 +274,7 @@ class ShrinkCompilerTest extends TestCase
 			$expect = $jsfile->read();
 			$jsfile->close();
 
-			$this->assertEquals($expect, $result, 'Compiled Typescript does not match. Ensure Typescript script command line utility is available. npm install -g typescript');
+			$this->assertEquals($result, $expect, 'Compiled Typescript does not match. Ensure Typescript script command line utility is available. npm install -g typescript');
 		}
 		else{
 			echo "\nSkipping Typescript tests, no typescript available: npm install -g typescript\n";

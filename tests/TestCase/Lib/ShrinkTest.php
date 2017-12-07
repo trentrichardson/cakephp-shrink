@@ -61,7 +61,7 @@ class ShrinkTest extends TestCase
 		$expect = $expectedfile->read();
 		$expectedfile->close();
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($result, $expect);
 	}
 
 
@@ -94,7 +94,7 @@ class ShrinkTest extends TestCase
 		$expect = $expectedfile->read();
 		$expectedfile->close();
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($result, $expect);
 	}
 
 
@@ -126,7 +126,7 @@ class ShrinkTest extends TestCase
 		$expect = $expectedfile->read();
 		$expectedfile->close();
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($result, $expect);
 	}
 
 
@@ -158,7 +158,7 @@ class ShrinkTest extends TestCase
 		$expect = $expectedfile->read();
 		$expectedfile->close();
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($result, $expect);
 	}
 
 }
